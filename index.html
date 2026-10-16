@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лапки и Хвосты — зоомагазин</title>
+  <meta name="description" content="Корм, наполнители, домики, клетки и аксессуары для кошек, собак и маленьких любимцев. Бесплатная доставка от 50 Br.">
+  <link rel="icon" type="image/png" href="c2376b05-4fee-44d5-bf91-9f467e0d92c6.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="blobs" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <div class="topline">
+    <div class="marquee">
+      <span>ВСЁ ДЛЯ ЛАПОК И ХВОСТИКОВ</span><span>·</span><span>КОРМ</span><span>·</span><span>НАПОЛНИТЕЛЬ</span><span>·</span><span>АКСЕССУАРЫ</span><span>·</span><span>БЕСПЛАТНАЯ ДОСТАВКА ОТ 50 Br</span><span>·</span><span>ЗАКАЗ ПО ТЕЛЕФОНУ +375 (29) 325-62-48</span><span>·</span>
+      <span>ВСЁ ДЛЯ ЛАПОК И ХВОСТИКОВ</span><span>·</span><span>КОРМ</span><span>·</span><span>НАПОЛНИТЕЛЬ</span><span>·</span><span>АКСЕССУАРЫ</span><span>·</span><span>БЕСПЛАТНАЯ ДОСТАВКА ОТ 50 Br</span><span>·</span><span>ЗАКАЗ ПО ТЕЛЕФОНУ +375 (29) 325-62-48</span><span>·</span>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="logo" href="#top"><img src="c2376b05-4fee-44d5-bf91-9f467e0d92c6.png" alt="Лапки и Хвосты"><span></span></a>
+    <nav class="navlinks"><a href="#catalog">Каталог</a><a href="#benefits">О нас</a><a href="#footer">Контакты</a></nav>
+    <button class="cart-button" id="openCart">Корзина <span class="count" id="cartCount">0</span></button>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <div class="eyebrow reveal">Забота о любимцах каждый день</div>
+      <h1 class="reveal" style="--d:.06s">Всё самое лучшее<br>для <em>питомцев.</em></h1>
+      <p class="reveal" style="--d:.12s">Корм, наполнители, домики, клетки и аксессуары для кошек, собак и маленьких любимцев. Заботимся о тех, кто дарит нам радость.</p>
+      <div class="hero-actions reveal" style="--d:.18s">
+        <button class="primary" id="shopNow">Смотреть каталог</button>
+        <span class="hero-note">Доставка по городу · бесплатно от 50 Br</span>
+      </div>
+      <ul class="hero-stats reveal" style="--d:.24s">
+        <li><b id="statCount">105</b><span>товаров</span></li>
+        <li><b id="statBrands">8</b><span>брендов</span></li>
+        <li><b>50 Br</b><span>бесплатная доставка</span></li>
+      </ul>
+    </div>
+    <div class="hero-art">
+      <img class="hero-dog" src="images/hero-dog.jpg" alt="Счастливая собака">
+      <img class="hero-cat" src="images/hero-cat.jpg" alt="Котёнок">
+      <span class="chip chip-1">🐾 Хиты недели</span>
+      <span class="chip chip-2">🚚 Быстрая доставка</span>
+      <span class="chip chip-3">💛 С любовью</span>
+    </div>
+  </section>
+
+  <main class="main" id="catalog">
+    <div class="section-head">
+      <div><div class="eyebrow">Выбрано с заботой</div><h2>Наш каталог</h2></div>
+      <p id="resultCount"></p>
+    </div>
+
+    <div class="toolbar">
+      <label class="search-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input class="search" id="search" type="search" placeholder="Найти корм, игрушку, аксессуар…" aria-label="Поиск товаров">
+      </label>
+      <select class="sort" id="sort" aria-label="Сортировка">
+        <option value="featured">Сначала популярные</option>
+        <option value="low">Сначала дешевле</option>
+        <option value="high">Сначала дороже</option>
+        <option value="name">По названию</option>
+      </select>
+    </div>
+
+    <div class="filters" id="filters">
+      <button class="filter active" data-cat="Все">Все товары</button>
+      <button class="filter" data-cat="Кошки">Для кошек</button>
+      <button class="filter" data-cat="Собаки">Для собак</button>
+      <button class="filter" data-cat="Наполнители и туалеты">Наполнители и туалеты</button>
+      <button class="filter" data-cat="Уход и гигиена">Уход и гигиена</button>
+      <button class="filter" data-cat="Домики и лежанки">Домики и лежанки</button>
+      <button class="filter" data-cat="Клетки и переноски">Клетки и переноски</button>
+      <button class="filter" data-cat="Грызуны и птицы">Грызуны и птицы</button>
+    </div>
+
+    <div class="grid" id="productGrid"></div>
+
+    <section class="benefits" id="benefits">
+      <article class="benefit reveal"><div class="benefit-icon">🐾</div><h3>Забота о каждом</h3><p>Подбираем полезные товары для питомцев разных видов и возрастов.</p></article>
+      <article class="benefit reveal" style="--d:.08s"><div class="benefit-icon">📞</div><h3>Заказ по телефону</h3><p>Собери корзину и напиши или позвони: <a class="footer-phone" href="tel:+375293256248">+375 (29) 325-62-48</a> — подтвердим и привезём.</p></article>
+      <article class="benefit reveal" style="--d:.16s"><div class="benefit-icon">🚚</div><h3>Доставка от 50 Br</h3><p>При заказе от 50 Br привезём бесплатно — по городу и ближним районам.</p></article>
+      <article class="benefit reveal" style="--d:.24s"><div class="benefit-icon">💛</div><h3>С любовью к животным</h3><p>Каждый хвостик заслуживает внимания, комфорта и хорошего ухода.</p></article>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <a class="logo" href="#top">Лапки и Хвосты<span> ♥</span></a>
+    <span>· Лапки и Хвосты © 2026</span>
+    <span>Заказ по телефону: <a class="footer-phone" href="tel:+375293256248">+375 (29) 325-62-48</a></span>
+  </footer>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer" aria-label="Корзина покупок" role="dialog">
+    <div class="drawer-head"><h2>Твоя корзина</h2><button class="close" id="closeCart" aria-label="Закрыть">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-bottom" id="cartBottom"></div>
+  </aside>
+
+  <div class="modal" id="modal"><div class="modal-card">
+    <div class="modal-icon">📞</div>
+    <h2>Заказ по телефону</h2>
+    <p>Позвоните или напишите — подтвердим наличие, соберём заказ и договоримся о доставке.</p>
+    <a class="phone-link" href="tel:+375293256248">+375 (29) 325-62-48</a>
+    <div class="order-summary" id="orderSummary"></div>
+    <button class="copy-phone" id="copyPhone">Скопировать номер</button>
+    <button class="checkout" id="modalClose">Понятно</button>
+  </div></div>
+  <div class="toast" id="toast" role="status"></div>
+  <button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+  <script>
+    // Товары из поставки «ТриолБел» от 16.10.2026. Цена — розничная, в белорусских рублях (Br).
+    // Чтобы изменить товар, правь name / brand / kind / category / price / tag / image ниже.
+    const products = [
+      {id:1, name:"Darsi для кошек консервы в ассортименте, 250 г", brand:"Darsi", kind:"Влажный корм", category:"Кошки", price:3.4, tag:"", image:"images/n001.jpg"},
+      {id:2, name:"Брит Премиум Консервы для кошек в ассортименте, 100 г", brand:"Brit Premium", kind:"Влажный корм", category:"Кошки", price:4.86, tag:"", image:"images/n002.jpg"},
+      {id:3, name:"Molina Ламистер для взрослых кошек", brand:"Molina", kind:"Влажный корм", category:"Кошки", price:4.37, tag:"", image:"images/n003.jpg"},
+      {id:4, name:"Брит Кеа Ламистер для взрослых кошек", brand:"Brit Care", kind:"Влажный корм", category:"Кошки", price:4.78, tag:"", image:"images/n004.jpg"},
+      {id:5, name:"Darsi для кошек в ассортименте 85 г", brand:"Darsi", kind:"Влажный корм", category:"Кошки", price:1.26, tag:"", image:"images/n005.jpg"},
+      {id:6, name:"Molina Пауч для кошек в ассотрименте, 70 г", brand:"Molina", kind:"Влажный корм", category:"Кошки", price:3.81, tag:"", image:"images/n006.jpg"},
+      {id:7, name:"Брит для кошек в ассотрименте 85 г", brand:"Brit Premium", kind:"Влажный корм", category:"Кошки", price:2.06, tag:"", image:"images/n007.jpg"},
+      {id:8, name:"Брит Воздушный паштет для кошек в ассотрименте, 100 г", brand:"Brit Premium", kind:"Влажный корм", category:"Кошки", price:4.05, tag:"", image:"images/n008.jpg"},
+      {id:9, name:"Darsi для кошек в ассортименте, 300 г", brand:"Darsi", kind:"Сухой корм", category:"Кошки", price:5.83, tag:"", image:"images/n009.jpg"},
+      {id:10, name:"Darsi корм для кошек, 10 кг в ассорт", brand:"Darsi", kind:"Сухой корм", category:"Кошки", price:144.18, tag:"", image:"images/n010.jpg"},
+      {id:11, name:"Triol Колбаски аппетитные для кошек, 40 г", brand:"Triol", kind:"Лакомство", category:"Кошки", price:3.73, tag:"", image:"images/n011.jpg"},
+      {id:12, name:"Darsi для кошек в ассортименте, 10 кг", brand:"Darsi", kind:"Сухой корм", category:"Кошки", price:144.18, tag:"", image:"images/n012.jpg"},
+      {id:13, name:"Брит Премиум Сухой корм для кошек в ассортименте, 400 г", brand:"Brit Premium", kind:"Сухой корм", category:"Кошки", price:10.85, tag:"", image:"images/n013.jpg"},
+      {id:14, name:"Брит Премиум Лакомство для кошек и котят 36 г", brand:"Brit Premium", kind:"Лакомство", category:"Кошки", price:3.48, tag:"", image:"images/n014.jpg"},
+      {id:15, name:"Брит Премиум Сухой корм для кошек в ассортименте, 8кг", brand:"Brit Premium", kind:"Сухой корм", category:"Кошки", price:170.1, tag:"", image:"images/n015.jpg"},
+      {id:16, name:"Darsi для собак консервы (паштет), 410 г", brand:"Darsi", kind:"Влажный корм", category:"Собаки", price:4.41, tag:"", image:"images/n016.jpg"},
+      {id:17, name:"Darsi для собак консервы (паштет), 850г", brand:"Darsi", kind:"Влажный корм", category:"Собаки", price:7.84, tag:"", image:"images/n017.jpg"},
+      {id:18, name:"Брит Премиум Консервы для собак в ассортименте, 100г", brand:"Brit Premium", kind:"Влажный корм", category:"Собаки", price:4.86, tag:"", image:"images/n018.jpg"},
+      {id:19, name:"Брит Премиум Консервы для собак в ассортименте, 410г", brand:"Brit Premium", kind:"Влажный корм", category:"Собаки", price:5.83, tag:"", image:"images/n019.jpg"},
+      {id:20, name:"Брит Премиум Консервы для собак в ассортименте, 850г", brand:"Brit Premium", kind:"Влажный корм", category:"Собаки", price:10.21, tag:"", image:"images/n020.jpg"},
+      {id:21, name:"Darsi Active для собак в ассортименте, 85 г", brand:"Darsi", kind:"Влажный корм", category:"Собаки", price:1.26, tag:"", image:"images/n021.jpg"},
+      {id:22, name:"Брит Премиум для собак в ассортименте, 85 г", brand:"Brit Premium", kind:"Влажный корм", category:"Собаки", price:2.06, tag:"", image:"images/n022.jpg"},
+      {id:23, name:"Darsi корм для собак в ассортименте, 2,5 кг", brand:"Darsi", kind:"Сухой корм", category:"Собаки", price:29.16, tag:"", image:"images/n023.jpg"},
+      {id:24, name:"Darsi корм для собак в ассортименте, 10 кг", brand:"Darsi", kind:"Сухой корм", category:"Собаки", price:105.3, tag:"", image:"images/n024.jpg"},
+      {id:25, name:"Брит Кеа Сухой корм для собак в ассортиментее, 400г", brand:"Brit Care", kind:"Сухой корм", category:"Собаки", price:18.63, tag:"", image:"images/n025.jpg"},
+      {id:26, name:"Molina Лакомство для собак в ассортименте 20 г", brand:"Molina", kind:"Лакомство", category:"Собаки", price:4.05, tag:"", image:"images/n026.jpg"},
+      {id:27, name:"Molina Лакомство для собак в ассортименте 50 г", brand:"Molina", kind:"Лакомство", category:"Собаки", price:5.35, tag:"", image:"images/n027.jpg"},
+      {id:28, name:"Брит Кеа Сухой корм для собак в ассортиментее, 12 кг", brand:"Brit Care", kind:"Сухой корм", category:"Собаки", price:309.26, tag:"", image:"images/n028.jpg"},
+      {id:29, name:"Брит Премиум Сухой корм для собак в ассортименте, 1 кг", brand:"Brit Premium", kind:"Сухой корм", category:"Собаки", price:20.57, tag:"", image:"images/n029.jpg"},
+      {id:30, name:"Triol Колбаски аппетитные для собак, 40 г", brand:"Triol", kind:"Лакомство", category:"Собаки", price:3.89, tag:"", image:"images/n030.jpg"},
+      {id:31, name:"Triol Лакомство для собак «Хрустящие шарики» в ассортименте, 70 г", brand:"Triol", kind:"Влажный корм", category:"Собаки", price:7.61, tag:"", image:"images/n031.jpg"},
+      {id:32, name:"Брит Премиум Сухой корм для собак в ассортименте, 15 кг", brand:"Brit Premium", kind:"Сухой корм", category:"Собаки", price:253.53, tag:"", image:"images/n032.jpg"},
+      {id:33, name:"Triol Мини-косточки для собак в ассортименте, 50 г", brand:"Triol", kind:"Лакомство", category:"Собаки", price:6.32, tag:"", image:"images/n033.jpg"},
+      {id:34, name:"Брит Премиум Лакомство для собак и щенков в ассортименте, 36 г", brand:"Brit Premium", kind:"Лакомство", category:"Собаки", price:3.24, tag:"", image:"images/n034.jpg"},
+      {id:35, name:"Molina Лакомство для собак в ассортименте, 50 г", brand:"Molina", kind:"Лакомство", category:"Собаки", price:5.35, tag:"", image:"images/n035.jpg"},
+      {id:36, name:"Triol Колбаски аппетитные для собак в ассорт., 40 г", brand:"Triol", kind:"Лакомство", category:"Собаки", price:3.89, tag:"", image:"images/n036.jpg"},
+      {id:37, name:"Cat Step Наполнитель комкующийся минеральный в ассорт., 5 л (4,2 кг)", brand:"Cat Step", kind:"Наполнитель", category:"Наполнители и туалеты", price:20.93, tag:"", image:"images/n037.jpg"},
+      {id:38, name:"Cat Step Tofu наполнитель комкующийся растительный в ассорт., 6 л, 2,7кг", brand:"Cat Step", kind:"Наполнитель", category:"Наполнители и туалеты", price:28.88, tag:"", image:"images/n038.jpg"},
+      {id:39, name:"Cat Step Наполнитель впитывающий силикагелевый в ассорт., 3,8 л (1,67 кг)", brand:"Cat Step", kind:"Наполнитель", category:"Наполнители и туалеты", price:19.84, tag:"", image:"images/n039.jpg"},
+      {id:40, name:"Gamma Туалет для кошек с сеткой мини \"Барсик\", 325*235*60мм, в ассорт", brand:"Gamma", kind:"Туалет", category:"Наполнители и туалеты", price:11.06, tag:"", image:"images/n040.jpg"},
+      {id:41, name:"Gamma Туалет для кошек прямоугольный с высоким бортом \"Пушок\", 455*350*190мм, в ассорт", brand:"Gamma", kind:"Туалет", category:"Наполнители и туалеты", price:25.64, tag:"", image:"images/n041.jpg"},
+      {id:42, name:"Gamma Шампунь для собак и кошек в ассорт., 250мл", brand:"Gamma", kind:"Шампунь", category:"Уход и гигиена", price:7.7, tag:"", image:"images/n042.jpg"},
+      {id:43, name:"Triol Корм для морских свинок Original 450 г", brand:"Triol", kind:"Корм для грызунов", category:"Грызуны и птицы", price:7.45, tag:"", image:"images/n043.jpg"},
+      {id:44, name:"Triol Корм для мышей и крыс Original 450 г", brand:"Triol", kind:"Корм для грызунов", category:"Грызуны и птицы", price:7.78, tag:"", image:"images/n044.jpg"},
+      {id:45, name:"Triol Когтерез-ножницы \"Стандарт\", 70*140мм", brand:"Triol", kind:"Когтерез", category:"Уход и гигиена", price:16.88, tag:"", image:"images/n045.jpg"},
+      {id:46, name:"Triol Пуходерка \"Классика\" 135*115мм", brand:"Triol", kind:"Пуходерка", category:"Уход и гигиена", price:11.87, tag:"", image:"images/n046.jpg"},
+      {id:47, name:"Triol Игровой комплекс для кошек \"Вулкан\", 400*400*590мм", brand:"Triol", kind:"Игровой комплекс", category:"Домики и лежанки", price:71, tag:"Под заказ", image:"images/n047.jpg"},
+      {id:48, name:"Triol Когтеточка из сизаля \"Столбик №208\" с шариком, d350x620мм", brand:"Triol", kind:"Когтеточка", category:"Домики и лежанки", price:35.1, tag:"Под заказ", image:"images/n048.jpg"},
+      {id:49, name:"Gamma Диван \"Элегант\" S, 650*500*80мм", brand:"Gamma", kind:"Диван", category:"Домики и лежанки", price:90.7, tag:"Под заказ", image:"images/n049.jpg"},
+      {id:50, name:"Gamma Дом \"Лукошко\", 330*300*300мм", brand:"Gamma", kind:"Дом", category:"Домики и лежанки", price:69.2, tag:"Под заказ", image:"images/n050.jpg"},
+      {id:51, name:"Gamma Лежанка овальная \"Кижи Медиум\", 490*370*150мм", brand:"Gamma", kind:"Лежанка", category:"Домики и лежанки", price:75, tag:"Под заказ", image:"images/n051.jpg"},
+      {id:52, name:"Triol Вольер для животных, 8 секций, эмаль, 610*610мм", brand:"Triol", kind:"Вольер", category:"Клетки и переноски", price:256, tag:"Под заказ", image:"images/n052.jpg"},
+      {id:53, name:"Triol Дом-тент 1047M, 610*460*535мм", brand:"Triol", kind:"Дом-тент", category:"Домики и лежанки", price:268, tag:"Под заказ", image:"images/n053.jpg"},
+      {id:54, name:"Triol Клетка для животных, эмаль, 600*430*500мм", brand:"Triol", kind:"Клетка", category:"Клетки и переноски", price:172, tag:"Под заказ", image:"images/n054.jpg"},
+      {id:55, name:"Triol Переноска для животных c металлической дверцей \"Косточки\" S, голубая, 480*300*280мм,", brand:"Triol", kind:"Переноска", category:"Клетки и переноски", price:76.5, tag:"Под заказ", image:"images/n055.jpg"},
+      {id:56, name:"Triol Клетка для мелких животных, эмаль, 225*170*215мм", brand:"Triol", kind:"Клетка", category:"Клетки и переноски", price:41.8, tag:"Под заказ", image:"images/n056.jpg"},
+      {id:57, name:"Triol Клетка для птиц 2101Z, цинк, 300*230*390мм", brand:"Triol", kind:"Клетка", category:"Клетки и переноски", price:48, tag:"Под заказ", image:"images/n057.jpg"},
+    ];
+
+    const FREE_FROM = 50; // бесплатная доставка от этой суммы, Br
+    const PHONE_HREF = 'tel:+375293256248';       // номер для заказа
+    const PHONE_TEXT = '+375 (29) 325-62-48';
+    let category = 'Все', query = '', sort = 'featured', cart = {};
+    const money = n => new Intl.NumberFormat('ru-RU', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(n) + ' Br';
+    const plural = (n, one, few, many) => {
+      const m10 = n % 10, m100 = n % 100;
+      if (m10 === 1 && m100 !== 11) return one;
+      if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+      return many;
+    };
+    const grid = document.getElementById('productGrid');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* появление блоков при прокрутке */
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin: '0px 0px -8% 0px', threshold: .08}) : null;
+    const watch = (root) => (root || document).querySelectorAll('.reveal:not(.in)').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+    const revealAll = () => document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+    window.addEventListener('load', () => setTimeout(revealAll, 900));
+    setTimeout(revealAll, 2500);
+
+    function renderProducts() {
+      let list = products.filter(p =>
+        (category === 'Все' || p.category === category) &&
+        (p.name + ' ' + p.category + ' ' + p.kind + ' ' + p.brand).toLowerCase().includes(query.toLowerCase())
+      );
+      if (sort === 'low') list.sort((a,b) => a.price - b.price);
+      if (sort === 'high') list.sort((a,b) => b.price - a.price);
+      if (sort === 'name') list.sort((a,b) => a.name.localeCompare(b.name, 'ru'));
+      document.getElementById('resultCount').textContent =
+        list.length + ' ' + plural(list.length, 'товар', 'товара', 'товаров');
+
+      grid.innerHTML = list.length ? list.map((p, i) => `
+        <article class="product reveal" style="--d:${Math.min(i, 11) * 0.035}s">
+          <div class="product-visual">
+            ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
+            <img class="product-photo" src="${p.image}" alt="${p.name}" loading="lazy" decoding="async"
+                 onload="this.classList.add('loaded')"
+                 onerror="this.style.display='none';this.parentElement.classList.add('no-photo')">
+            <span class="product-fallback">${p.brand || 'Лапки и Хвосты'}<b>${p.kind || p.category}</b></span>
+          </div>
+          <div class="product-info">
+            <div class="product-category">${p.brand ? p.brand + ' · ' : ''}${p.kind || p.category}</div>
+            <h3 class="product-title">${p.name}</h3>
+            <div class="product-bottom">
+              <span class="price">${money(p.price)}</span>
+              <button class="add-cart" data-add="${p.id}" aria-label="Добавить ${p.name} в корзину">В корзину</button>
+            </div>
+          </div>
+        </article>`).join('') : '<div class="empty"><span>🐾</span>Ничего не найдено. Попробуй изменить поиск или категорию.</div>';
+
+      grid.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', () => add(Number(b.dataset.add))));
+      watch(grid);
+    }
+
+    function add(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      renderCart();
+      showToast('Добавлено в корзину ✓');
+      const badge = document.getElementById('cartCount');
+      badge.classList.remove('pop'); void badge.offsetWidth; badge.classList.add('pop');
+      const card = grid.querySelector(`[data-add="${id}"]`);
+      if (card && !reduceMotion) { card.classList.add('added'); setTimeout(() => card.classList.remove('added'), 600); }
+    }
+    function change(id, amount) { cart[id] = (cart[id] || 0) + amount; if (cart[id] <= 0) delete cart[id]; renderCart(); }
+    function totalCount() { return Object.values(cart).reduce((sum, n) => sum + n, 0); }
+    function totalPrice() { return products.reduce((sum, p) => sum + p.price * (cart[p.id] || 0), 0); }
+
+    function renderCart() {
+      document.getElementById('cartCount').textContent = totalCount();
+      const entries = products.filter(p => cart[p.id]);
+      const items = document.getElementById('cartItems');
+      const bottom = document.getElementById('cartBottom');
+      if (!entries.length) {
+        items.innerHTML = '<div class="empty-cart"><span>🛍️</span><strong>Пока здесь пусто</strong><p>Добавь товары из каталога — доставим бесплатно от 50 Br.</p></div>';
+        bottom.innerHTML = '';
+        return;
+      }
+      const sum = totalPrice();
+      const left = Math.max(0, FREE_FROM - sum);
+      const progress = Math.min(100, Math.round(sum / FREE_FROM * 100));
+      items.innerHTML = entries.map(p => `
+        <div class="cart-row"><img src="${p.image}" alt=""><div><div class="cart-name">${p.name}</div><div class="cart-price">${money(p.price)} за шт.</div>
+          <div class="qty"><button data-minus="${p.id}" aria-label="Меньше">−</button><span>${cart[p.id]}</span><button data-plus="${p.id}" aria-label="Больше">+</button></div></div>
+          <button class="remove" data-remove="${p.id}" aria-label="Удалить">×</button>
+        </div>`).join('');
+      items.querySelectorAll('[data-minus]').forEach(b => b.onclick = () => change(Number(b.dataset.minus), -1));
+      items.querySelectorAll('[data-plus]').forEach(b => b.onclick = () => change(Number(b.dataset.plus), 1));
+      items.querySelectorAll('[data-remove]').forEach(b => b.onclick = () => { delete cart[Number(b.dataset.remove)]; renderCart(); });
+      bottom.innerHTML = `
+        <div class="ship-progress ${left ? '' : 'done'}">
+          <div class="ship-bar"><i style="width:${progress}%"></i></div>
+          <div class="shipping-note">${left ? 'До бесплатной доставки осталось ' + money(left) : 'Ура! Доставка за наш счёт 🎉'}</div>
+        </div>
+        <div class="subtotal"><span>Итого</span><span>${money(sum)}</span></div>
+        <button class="checkout" id="checkout">Оформить заказ ↗</button>
+        <div class="cart-contact">Заказ по телефону: <a href="${PHONE_HREF}">${PHONE_TEXT}</a></div>`;
+      document.getElementById('checkout').onclick = () => {
+        const n = totalCount();
+        document.getElementById('orderSummary').innerHTML = n
+          ? `Ваш заказ: <b>${n} ${plural(n, 'товар', 'товара', 'товаров')}</b> на <b>${money(sum)}</b>`
+          : '';
+        document.getElementById('modal').classList.add('open');
+      };
+    }
+
+    function openCart() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.classList.add('locked'); }
+    function closeCart() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.classList.remove('locked'); }
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('show'); void toast.offsetWidth; toast.classList.add('show');
+      clearTimeout(showToast.t);
+      showToast.t = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    /* счётчики внутри фильтров */
+    document.querySelectorAll('#filters .filter').forEach(btn => {
+      const cat = btn.dataset.cat;
+      const n = cat === 'Все' ? products.length : products.filter(p => p.category === cat).length;
+      btn.insertAdjacentHTML('beforeend', `<i>${n}</i>`);
+    });
+
+    document.getElementById('filters').querySelectorAll('button').forEach(button => button.addEventListener('click', () => {
+      category = button.dataset.cat;
+      document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === button));
+      renderProducts();
+    }));
+    document.getElementById('search').addEventListener('input', e => { query = e.target.value; renderProducts(); });
+    document.getElementById('sort').addEventListener('change', e => { sort = e.target.value; renderProducts(); });
+    document.getElementById('openCart').onclick = openCart;
+    document.getElementById('closeCart').onclick = closeCart;
+    overlay.onclick = closeCart;
+    document.getElementById('shopNow').onclick = () => document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+    document.getElementById('modalClose').onclick = () => document.getElementById('modal').classList.remove('open');
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCart(); document.getElementById('modal').classList.remove('open'); } });
+
+    /* копирование номера для заказа */
+    document.getElementById('copyPhone').onclick = () => {
+      const done = () => showToast('Номер скопирован ✓');
+      const fallback = () => {
+        const t = document.createElement('textarea');
+        t.value = PHONE_TEXT;
+        t.style.cssText = 'position:fixed;top:-1000px';
+        document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); done(); } catch (e) { showToast(PHONE_TEXT); }
+        t.remove();
+      };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(PHONE_TEXT).then(done, fallback);
+      else fallback();
+    };
+
+    /* шапка: тень при прокрутке + кнопка «наверх» */
+    const nav = document.getElementById('nav'), toTop = document.getElementById('toTop');
+    const onScroll = () => {
+      nav.classList.toggle('scrolled', window.scrollY > 12);
+      toTop.classList.toggle('show', window.scrollY > 700);
+    };
+    window.addEventListener('scroll', onScroll, {passive: true});
+    onScroll();
+    toTop.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+
+    document.getElementById('statCount').textContent = products.length;
+    document.getElementById('statBrands').textContent = new Set(products.map(p => p.brand).filter(Boolean)).size;
+
+    renderProducts();
+    renderCart();
+    watch(document);
+  </script>
+</body>
+</html>
