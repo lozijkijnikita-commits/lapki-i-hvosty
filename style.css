@@ -439,6 +439,23 @@ footer {
   gap: 14px;
 }
 footer .logo { font-size: 18px; }
+.footer-qr {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  margin-top: 20px;
+  padding: 12px 18px 12px 12px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, box-shadow .3s;
+}
+.footer-qr:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.footer-qr img { width: 92px; height: 92px; display: block; border-radius: 10px; }
+.footer-qr-text b { display: block; font-family: var(--font-head); font-size: 14px; letter-spacing: -.01em; margin-bottom: 3px; }
+.footer-qr-text span { color: var(--muted); font-size: 12.5px; line-height: 1.4; }
 .footer-address {
   display: flex;
   align-items: center;
@@ -560,6 +577,18 @@ footer .logo { font-size: 18px; }
 .phone-link:hover { color: var(--accent-2); transform: translateX(3px); }
 .order-summary { margin-top: 12px; padding: 12px 15px; border-radius: 16px; background: var(--bg-2); color: var(--ink-soft); font-size: 13.5px; }
 .order-summary:empty { display: none; }
+.modal-qr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: var(--bg-2);
+}
+.modal-qr img { width: 84px; height: 84px; display: block; border-radius: 10px; background: #fff; padding: 4px; flex: none; }
+.modal-qr-text b { display: block; font-family: var(--font-head); font-size: 13.5px; margin-bottom: 3px; }
+.modal-qr-text span { color: var(--muted); font-size: 12px; line-height: 1.4; }
 .copy-phone {
   margin-top: 16px;
   width: 100%;
@@ -666,6 +695,8 @@ footer .logo { font-size: 18px; }
   .section-head { flex-direction: column; align-items: start; gap: 8px; }
   .benefits { grid-template-columns: 1fr; margin-top: 44px; }
   .footer-top { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-qr { width: 100%; padding: 12px; }
+  .footer-qr img { width: 84px; height: 84px; }
   .footer-address { font-size: 13px; }
   .to-top { right: 14px; bottom: 16px; }
 }
