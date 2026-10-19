@@ -845,6 +845,7 @@ footer .logo { font-size: 18px; }
 
   <script>
     // Товары из поставки «ТриолБел» от 16.10.2026. Цена — розничная, в белорусских рублях (Br).
+    // + поставка «ИнтернетПурин + Сириус» от 19.10.2026 (39 позиций, фото n058–n096).
     // Чтобы изменить товар, правь name / brand / kind / category / price / tag / image ниже.
     const products = [
       {id:1, name:"Darsi для кошек консервы в ассортименте, 250 г", brand:"Darsi", kind:"Влажный корм", category:"Кошки", price:3.4, tag:"", image:"images/n001.jpg"},
@@ -904,6 +905,45 @@ footer .logo { font-size: 18px; }
       {id:55, name:"Triol Переноска для животных c металлической дверцей \"Косточки\" S, голубая, 480*300*280мм,", brand:"Triol", kind:"Переноска", category:"Клетки и переноски", price:76.5, tag:"Под заказ", image:"images/n055.jpg"},
       {id:56, name:"Triol Клетка для мелких животных, эмаль, 225*170*215мм", brand:"Triol", kind:"Клетка", category:"Клетки и переноски", price:41.8, tag:"Под заказ", image:"images/n056.jpg"},
       {id:57, name:"Triol Клетка для птиц 2101Z, цинк, 300*230*390мм", brand:"Triol", kind:"Клетка", category:"Клетки и переноски", price:48, tag:"Под заказ", image:"images/n057.jpg"},
+      {id:58, name:"Felix Аппетитные кусочки. Корм консерв. полнорац. для котов в ассорт., 75гр", brand:"Felix", kind:"Влажный корм", category:"Кошки", price:1.57, tag:"", image:"images/n058.jpg"},
+      {id:59, name:"Felix Вкусный паштет. Корм конс. полнорационный для котов в ассорт., 75гр", brand:"Felix", kind:"Влажный корм", category:"Кошки", price:1.57, tag:"", image:"images/n059.jpg"},
+      {id:60, name:"Felix Мясное объедение. Корм сух. полнорац. д/взр. котов, 200гр", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:4.63, tag:"", image:"images/n060.jpg"},
+      {id:61, name:"Felix. Двойная вкуснятина. Корм сух. полнорац. для котов в ассорт., 600г", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:12.38, tag:"", image:"images/n061.jpg"},
+      {id:62, name:"Felix®. Двойная Вкуснятина®. Корм сухой полнорационный для котов в ассорт., 10 кг", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:148.53, tag:"", image:"images/n062.jpg"},
+      {id:63, name:"Гурмэ Перл. Корм консерв. полнорационный для котов в ассорт., 75г", brand:"Гурмэ", kind:"Влажный корм", category:"Кошки", price:2.13, tag:"", image:"images/n063.jpg"},
+      {id:64, name:"ДАРЛИНГ. Корм консерв. полнорационный для собак в ассорт., 75г.", brand:"Дарлинг", kind:"Влажный корм", category:"Собаки", price:1.13, tag:"", image:"images/n064.jpg"},
+      {id:65, name:"ДАРЛИНГ. Корм сухой полнорационный для собак в ассорт., 500гр", brand:"Дарлинг", kind:"Сухой корм", category:"Собаки", price:5.48, tag:"", image:"images/n065.jpg"},
+      {id:66, name:"ДАРЛИНГ. Корм сух. полнорац. для собак в ассорт., 15 кг", brand:"Дарлинг", kind:"Сухой корм", category:"Собаки", price:112.01, tag:"", image:"images/n066.jpg"},
+      {id:67, name:"ДАРЛИНГ. Корм консерв. полнорационный для кошек в ассорт., 75гр", brand:"Дарлинг", kind:"Влажный корм", category:"Кошки", price:1.13, tag:"", image:"images/n067.jpg"},
+      {id:68, name:"ДАРЛИНГ. Корм сух. полнорац. для кошек, 15 кг", brand:"Дарлинг", kind:"Сухой корм", category:"Кошки", price:174.97, tag:"", image:"images/n068.jpg"},
+      {id:69, name:"Проплан паштет 75г д/кошек 7лет+ индейка, 75гр", brand:"Pro Plan", kind:"Влажный корм", category:"Кошки", price:3.56, tag:"", image:"images/n069.jpg"},
+      {id:70, name:"Pro Plan. Корм конс. полнорационный для котят, 75гр.", brand:"Pro Plan", kind:"Влажный корм", category:"Кошки", price:3.56, tag:"", image:"images/n070.jpg"},
+      {id:71, name:"Pro Plan®. Корм консервированный полнорационный для кошек, в ассорт., 85гр.", brand:"Pro Plan", kind:"Влажный корм", category:"Кошки", price:3.56, tag:"", image:"images/n071.jpg"},
+      {id:72, name:"PPVD CN. Корм консерв. полнорац. диетич. д/кошек и собак всех возрастов при выздоровлении, 195гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:6.63, tag:"", image:"images/n072.jpg"},
+      {id:73, name:"PRO PLAN VETERINARY DIETS EN St/Ox. Корм конс. полнорац. диетич. д/взр. кошек и котят при расстройствах пищеварения, 195гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:6.63, tag:"", image:"images/n073.jpg"},
+      {id:74, name:"PRO PLAN VETERINARY DIETS UR St/Ox. Корм сухой полнорац. диетич. д/взр-х кошек при болезни нижн. отделов мочевывод-х путей, с курицей, 350гр", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:8.11, tag:"", image:"images/n074.jpg"},
+      {id:75, name:"PRO PLAN VETERINARY DIETS EN St/Ox. Корм сухой полнорац. диетич. д/взр-х кошек и котят при расстр.пищеварения, 400 гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:12.49, tag:"", image:"images/n075.jpg"},
+      {id:76, name:"Pro Plan Корм сух. полнорац. для кошек в ассорт.,400гр", brand:"Pro Plan", kind:"Сухой корм", category:"Кошки", price:19.13, tag:"", image:"images/n076.jpg"},
+      {id:77, name:"Pro Plan . Корм сух. полнорац. для кошек в ассорт.,10кг", brand:"Pro Plan", kind:"Сухой корм", category:"Кошки", price:396.56, tag:"", image:"images/n077.jpg"},
+      {id:78, name:"PRO PLAN VETERINARY DIETS NF. Корм конс. полнорац. Диетический для собак, в ассорт., 400гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Собаки", price:12.54, tag:"", image:"images/n078.jpg"},
+      {id:79, name:"PRO PLAN JM. Корм сухой полнорац. д/щенков, взр-х и пожилых собак с питательными веществами для поддержки работы суставов и др., 12кг", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:295.14, tag:"", image:"images/n079.jpg"},
+      {id:80, name:"Pro Plan. Корм конс. полнорац. для собак в ассорт., 85гр", brand:"Pro Plan", kind:"Влажный корм", category:"Собаки", price:3.31, tag:"", image:"images/n080.jpg"},
+      {id:81, name:"Pro Plan Корм сухой полнорац. для взр. собак и щенков мелких и карлик. пород, 700гр.", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:25.83, tag:"", image:"images/n081.jpg"},
+      {id:82, name:"Pro Plan Корм сухой полнорац. для щенков крупных пород с атлет. телослож., 12кг.", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:296.35, tag:"", image:"images/n082.jpg"},
+      {id:83, name:"Pro Plan Корм сухой полнорац. для взр. собак средних пород, 14 кг.", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:345.74, tag:"", image:"images/n083.jpg"},
+      {id:84, name:"SIRIUS Сухой корм для взр.котов и котят, 400гр. в ассорт.", brand:"Sirius", kind:"Сухой корм", category:"Кошки", price:12.21, tag:"", image:"images/n084.jpg"},
+      {id:85, name:"SIRIUS Сухой корм для кошек в ассорт., 10кг.", brand:"Sirius", kind:"Сухой корм", category:"Кошки", price:200.49, tag:"", image:"images/n085.jpg"},
+      {id:86, name:"SIRIUS Сухой корм для собак, 15 кг.", brand:"Sirius", kind:"Сухой корм", category:"Собаки", price:246.39, tag:"", image:"images/n086.jpg"},
+      {id:87, name:"SIRIUS Влажный корм для котят и кошек в ассорт., 85 гр.", brand:"Sirius", kind:"Влажный корм", category:"Кошки", price:2.82, tag:"", image:"images/n087.jpg"},
+      {id:88, name:"SIRIUS Конс для щенков и мал/сред пород собак, 100 гр.", brand:"Sirius", kind:"Влажный корм", category:"Собаки", price:3.05, tag:"", image:"images/n088.jpg"},
+      {id:89, name:"НАШ РАЦИОН Сухой корм для кошек, 10кг", brand:"Наш рацион", kind:"Сухой корм", category:"Кошки", price:107.68, tag:"", image:"images/n089.jpg"},
+      {id:90, name:"НАШ РАЦИОН Сухой корм для собак и щенков, 15кг", brand:"Наш рацион", kind:"Сухой корм", category:"Собаки", price:159.62, tag:"", image:"images/n090.jpg"},
+      {id:91, name:"Наполнитель Ok-Lock Антизапах растительный в ассорт., 6л", brand:"Ok-Lock", kind:"Наполнитель", category:"Наполнители и туалеты", price:31.85, tag:"", image:"images/n091.jpg"},
+      {id:92, name:"Наполнитель Ok-Lock растительный , в ассорт., 5л.", brand:"Ok-Lock", kind:"Наполнитель", category:"Наполнители и туалеты", price:26.94, tag:"", image:"images/n092.jpg"},
+      {id:93, name:"Наполнитель О!Отлично-котологично растительный, в ассорт. 5л.", brand:"О!Отлично", kind:"Наполнитель", category:"Наполнители и туалеты", price:18.99, tag:"", image:"images/n093.jpg"},
+      {id:94, name:"Наполнитель CATPIX растительный в ассорт., 5л", brand:"CATPIX", kind:"Наполнитель", category:"Наполнители и туалеты", price:18.99, tag:"", image:"images/n094.jpg"},
+      {id:95, name:"Наполнитель ТМ Питомец древесный элитный, 3л", brand:"Питомец", kind:"Наполнитель", category:"Наполнители и туалеты", price:7.86, tag:"", image:"images/n095.jpg"},
+      {id:96, name:"Наполнитель ТМ Питомец древесный элитный, 5л.", brand:"Питомец", kind:"Наполнитель", category:"Наполнители и туалеты", price:10.42, tag:"", image:"images/n096.jpg"},
     ];
 
     const FREE_FROM = 50; // бесплатная доставка от этой суммы, Br
@@ -992,7 +1032,7 @@ footer .logo { font-size: 18px; }
       const left = Math.max(0, FREE_FROM - sum);
       const progress = Math.min(100, Math.round(sum / FREE_FROM * 100));
       items.innerHTML = entries.map(p => `
-        <div class="cart-row"><img src="${p.image}" alt=""><div><div class="cart-name">${p.name}</div><div class="cart-price">${money(p.price)} за шт.</div>
+        <div class="cart-row"><img src="${p.image}" alt="" onerror="this.style.display='none'"><div><div class="cart-name">${p.name}</div><div class="cart-price">${money(p.price)} за шт.</div>
           <div class="qty"><button data-minus="${p.id}" aria-label="Меньше">−</button><span>${cart[p.id]}</span><button data-plus="${p.id}" aria-label="Больше">+</button></div></div>
           <button class="remove" data-remove="${p.id}" aria-label="Удалить">×</button>
         </div>`).join('');
