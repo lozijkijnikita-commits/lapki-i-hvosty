@@ -164,6 +164,45 @@ img { display: block; max-width: 100%; }
 }
 .count.pop { animation: pop .45s cubic-bezier(.2, 1.6, .4, 1); }
 
+/* ---------- Instagram ---------- */
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.ig-link {
+  display: inline-grid;
+  place-items: center;
+  width: 42px; height: 42px;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s, box-shadow .25s, color .25s, border-color .25s;
+}
+.ig-link svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-link:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #f9ce34, #ee2a7b 52%, #6228d7);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.ig-link:active { transform: scale(.95); }
+
+/* ссылка-текст на Инстаграм (модальное окно, корзина) */
+.ig-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color .25s;
+}
+.ig-text-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-text-link:hover { color: #ee2a7b; }
+
 /* ---------- первый экран ---------- */
 .hero {
   position: relative;
@@ -409,6 +448,22 @@ h2 { margin: 8px 0 0; font-family: var(--font-head); font-size: clamp(24px, 2.6v
 .empty { grid-column: 1 / -1; padding: 60px 16px; text-align: center; color: var(--muted); font-weight: 600; }
 .empty span { display: block; font-size: 40px; margin-bottom: 10px; animation: float 5s ease-in-out infinite; }
 
+.load-more-wrap { display: flex; justify-content: center; margin-top: 36px; }
+.load-more-wrap[hidden] { display: none; }
+.load-more {
+  border: 1px solid transparent;
+  border-radius: 30px;
+  padding: 14px 34px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  box-shadow: var(--shadow-md);
+  transition: transform .25s cubic-bezier(.2, .7, .3, 1), box-shadow .25s, filter .25s;
+}
+.load-more:hover { transform: translateY(-2px); box-shadow: 0 18px 30px -16px rgba(180, 97, 31, .8); filter: brightness(1.04); }
+.load-more:active { transform: scale(.97); }
+
 /* ---------- преимущества ---------- */
 .benefits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 64px; }
 .benefit {
@@ -468,6 +523,25 @@ footer .logo { font-size: 18px; }
 .footer-qr img { width: 92px; height: 92px; display: block; border-radius: 10px; }
 .footer-qr-text b { display: block; font-family: var(--font-head); font-size: 14px; letter-spacing: -.01em; margin-bottom: 3px; }
 .footer-qr-text span { color: var(--muted); font-size: 12.5px; line-height: 1.4; }
+.footer-social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 18px 11px 13px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.social-link svg { width: 23px; height: 23px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+.social-link b { display: block; font-family: var(--font-head); font-size: 14px; letter-spacing: -.01em; }
+.social-link span { display: block; color: var(--muted); font-size: 12.5px; }
+.social-link:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: #e6cbab; }
+.social-link:hover svg { stroke: #ee2a7b; }
 .footer-address {
   display: flex;
   align-items: center;
@@ -680,6 +754,8 @@ footer .logo { font-size: 18px; }
   .nav { padding: 8px 14px; gap: 10px; }
   .logo img { height: 62px; max-width: 176px; }
   .logo span.logo-address { font-size: 10px; }
+  .ig-link { width: 38px; height: 38px; }
+  .ig-link svg { width: 18px; height: 18px; }
   .cart-button { padding: 9px 13px; font-size: 14px; }
 
   /* первый экран на телефоне: компактно, без пустот */
@@ -715,9 +791,18 @@ footer .logo { font-size: 18px; }
 
 /* совсем узкие телефоны — чуть уменьшаем лого и корзину, чтобы всё влезло в строку */
 @media (max-width: 380px) {
+  .nav { padding: 6px 8px; gap: 8px; }
+  .nav-actions { gap: 8px; }
   .logo img { height: 54px; max-width: 148px; }
   .logo span.logo-address { font-size: 9px; }
+  .ig-link { width: 34px; height: 34px; }
+  .ig-link svg { width: 16px; height: 16px; }
   .cart-button { padding: 8px 11px; font-size: 13px; }
+}
+
+/* самые узкие экраны — прячем адрес в шапке, чтобы строка не ломалась */
+@media (max-width: 340px) {
+  .logo span.logo-address { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -744,7 +829,12 @@ footer .logo { font-size: 18px; }
   <header class="nav" id="nav">
     <a class="logo" href="#top"><img src="c2376b05-4fee-44d5-bf91-9f467e0d92c6.png" alt="Лапки и Хвосты"><span class="logo-address">📍 г. Барановичи, ул. Тельмана 104А</span></a>
     <nav class="navlinks"><a href="#catalog">Каталог</a><a href="#benefits">О нас</a><a href="#footer">Контакты</a></nav>
-    <button class="cart-button" id="openCart">Корзина <span class="count" id="cartCount">0</span></button>
+    <div class="nav-actions">
+      <a class="ig-link" href="https://www.instagram.com/lapki_i_hvosty9" target="_blank" rel="noopener" aria-label="Мы в Instagram" title="Мы в Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <button class="cart-button" id="openCart">Корзина <span class="count" id="cartCount">0</span></button>
+    </div>
   </header>
 
   <section class="hero" id="top">
@@ -790,14 +880,24 @@ footer .logo { font-size: 18px; }
       <button class="filter active" data-cat="Все">Все товары</button>
       <button class="filter" data-cat="Кошки">Для кошек</button>
       <button class="filter" data-cat="Собаки">Для собак</button>
+      <button class="filter" data-cat="Грызуны и птицы">Грызуны и птицы</button>
       <button class="filter" data-cat="Наполнители и туалеты">Наполнители и туалеты</button>
       <button class="filter" data-cat="Уход и гигиена">Уход и гигиена</button>
       <button class="filter" data-cat="Домики и лежанки">Домики и лежанки</button>
       <button class="filter" data-cat="Клетки и переноски">Клетки и переноски</button>
-      <button class="filter" data-cat="Грызуны и птицы">Грызуны и птицы</button>
+      <button class="filter" data-cat="Игрушки">Игрушки</button>
+      <button class="filter" data-cat="Амуниция">Амуниция</button>
+      <button class="filter" data-cat="Миски и поилки">Миски и поилки</button>
+      <button class="filter" data-cat="Одежда">Одежда</button>
+      <button class="filter" data-cat="Здоровье">Здоровье</button>
+      <button class="filter" data-cat="Аквариумы">Аквариумы</button>
+      <button class="filter" data-cat="Аксессуары">Аксессуары</button>
     </div>
 
     <div class="grid" id="productGrid"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" hidden>
+      <button class="load-more" id="loadMore">Показать ещё</button>
+    </div>
 
     <section class="benefits" id="benefits">
       <article class="benefit reveal"><div class="benefit-icon">🐾</div><h3>Забота о каждом</h3><p>Подбираем полезные товары для питомцев разных видов и возрастов.</p></article>
@@ -816,6 +916,12 @@ footer .logo { font-size: 18px; }
     <div class="footer-qr">
       <img src="images/qr-site.png" alt="QR-код: открыть сайт магазина" width="96" height="96" loading="lazy">
       <div class="footer-qr-text"><b>Мы в телефоне</b><span>Наведи камеру — откроется каталог</span></div>
+    </div>
+    <div class="footer-social">
+      <a class="social-link" href="https://www.instagram.com/lapki_i_hvosty9" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        <span><b>Мы в Instagram</b>@lapki_i_hvosty9</span>
+      </a>
     </div>
     <div class="footer-address"><span class="pin">📍</span> г. Барановичи, ул. Тельмана 104А</div>
   </footer>
@@ -837,6 +943,10 @@ footer .logo { font-size: 18px; }
       <img src="images/qr-site.png" alt="QR-код: открыть сайт магазина" width="84" height="84" loading="lazy">
       <div class="modal-qr-text"><b>Сайт в телефоне</b><span>Наведи камеру — откроется каталог</span></div>
     </div>
+    <a class="ig-text-link" href="https://www.instagram.com/lapki_i_hvosty9" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+      Напишите нам в Instagram
+    </a>
     <button class="copy-phone" id="copyPhone">Скопировать номер</button>
     <button class="checkout" id="modalClose">Понятно</button>
   </div></div>
@@ -852,7 +962,7 @@ footer .logo { font-size: 18px; }
       {id:2, name:"Брит Премиум Консервы для кошек в ассортименте, 100 г", brand:"Brit Premium", kind:"Влажный корм", category:"Кошки", price:4.9, tag:"", image:"images/n002.jpg"},
       {id:3, name:"Molina Ламистер для взрослых кошек", brand:"Molina", kind:"Влажный корм", category:"Кошки", price:4.4, tag:"", image:"images/n003.jpg"},
       {id:4, name:"Брит Кеа Ламистер для взрослых кошек", brand:"Brit Care", kind:"Влажный корм", category:"Кошки", price:4.8, tag:"", image:"images/n004.jpg"},
-      {id:5, name:"Darsi для кошек в ассортименте 85 г", brand:"Darsi", kind:"Влажный корм", category:"Кошки", price:1.3, tag:"", image:"images/n005.jpg"},
+      {id:5, name:"Darsi для кошек в ассортименте 85 г", brand:"Darsi", kind:"Влажный корм", category:"Кошки", price:1.3, tag:"", image:"images/w_97c72e4f372d5a3c.jpg"},
       {id:6, name:"Molina Пауч для кошек в ассотрименте, 70 г", brand:"Molina", kind:"Влажный корм", category:"Кошки", price:3.8, tag:"", image:"images/n006.jpg"},
       {id:7, name:"Брит для кошек в ассотрименте 85 г", brand:"Brit Premium", kind:"Влажный корм", category:"Кошки", price:2.1, tag:"", image:"images/n007.jpg"},
       {id:8, name:"Брит Воздушный паштет для кошек в ассотрименте, 100 г", brand:"Brit Premium", kind:"Влажный корм", category:"Кошки", price:4.1, tag:"", image:"images/n008.jpg"},
@@ -873,7 +983,7 @@ footer .logo { font-size: 18px; }
       {id:23, name:"Darsi корм для собак в ассортименте, 2,5 кг", brand:"Darsi", kind:"Сухой корм", category:"Собаки", price:29.2, tag:"", image:"images/n023.jpg"},
       {id:24, name:"Darsi корм для собак в ассортименте, 10 кг", brand:"Darsi", kind:"Сухой корм", category:"Собаки", price:105.3, tag:"", image:"images/n024.jpg"},
       {id:25, name:"Брит Кеа Сухой корм для собак в ассортиментее, 400г", brand:"Brit Care", kind:"Сухой корм", category:"Собаки", price:18.6, tag:"", image:"images/n025.jpg"},
-      {id:26, name:"Molina Лакомство для собак в ассортименте 20 г", brand:"Molina", kind:"Лакомство", category:"Собаки", price:4.1, tag:"", image:"images/n026.jpg"},
+      {id:26, name:"Molina Лакомство для собак в ассортименте 20 г", brand:"Molina", kind:"Лакомство", category:"Собаки", price:4.1, tag:"", image:"images/w_809cb150d30c201f.jpg"},
       {id:27, name:"Molina Лакомство для собак в ассортименте 50 г", brand:"Molina", kind:"Лакомство", category:"Собаки", price:5.4, tag:"", image:"images/n027.jpg"},
       {id:28, name:"Брит Кеа Сухой корм для собак в ассортиментее, 12 кг", brand:"Brit Care", kind:"Сухой корм", category:"Собаки", price:309.3, tag:"", image:"images/n028.jpg"},
       {id:29, name:"Брит Премиум Сухой корм для собак в ассортименте, 1 кг", brand:"Brit Premium", kind:"Сухой корм", category:"Собаки", price:20.6, tag:"", image:"images/n029.jpg"},
@@ -881,7 +991,7 @@ footer .logo { font-size: 18px; }
       {id:31, name:"Triol Лакомство для собак «Хрустящие шарики» в ассортименте, 70 г", brand:"Triol", kind:"Влажный корм", category:"Собаки", price:7.6, tag:"", image:"images/n031.jpg"},
       {id:32, name:"Брит Премиум Сухой корм для собак в ассортименте, 15 кг", brand:"Brit Premium", kind:"Сухой корм", category:"Собаки", price:253.5, tag:"", image:"images/n032.jpg"},
       {id:33, name:"Triol Мини-косточки для собак в ассортименте, 50 г", brand:"Triol", kind:"Лакомство", category:"Собаки", price:6.3, tag:"", image:"images/n033.jpg"},
-      {id:34, name:"Брит Премиум Лакомство для собак и щенков в ассортименте, 36 г", brand:"Brit Premium", kind:"Лакомство", category:"Собаки", price:3.2, tag:"", image:"images/n034.jpg"},
+      {id:34, name:"Брит Премиум Лакомство для собак и щенков в ассортименте, 36 г", brand:"Brit Premium", kind:"Лакомство", category:"Собаки", price:3.2, tag:"", image:"images/w_bc7cc662154e25ce.jpg"},
       {id:35, name:"Molina Лакомство для собак в ассортименте, 50 г", brand:"Molina", kind:"Лакомство", category:"Собаки", price:5.4, tag:"", image:"images/n035.jpg"},
       {id:36, name:"Triol Колбаски аппетитные для собак в ассорт., 40 г", brand:"Triol", kind:"Лакомство", category:"Собаки", price:3.9, tag:"", image:"images/n036.jpg"},
       {id:37, name:"Cat Step Наполнитель комкующийся минеральный в ассорт., 5 л (4,2 кг)", brand:"Cat Step", kind:"Наполнитель", category:"Наполнители и туалеты", price:20.9, tag:"", image:"images/n037.jpg"},
@@ -905,12 +1015,12 @@ footer .logo { font-size: 18px; }
       {id:55, name:"Triol Переноска для животных c металлической дверцей \"Косточки\" S, голубая, 480*300*280мм,", brand:"Triol", kind:"Переноска", category:"Клетки и переноски", price:76.5, tag:"Под заказ", image:"images/n055.jpg"},
       {id:56, name:"Triol Клетка для мелких животных, эмаль, 225*170*215мм", brand:"Triol", kind:"Клетка", category:"Клетки и переноски", price:41.8, tag:"Под заказ", image:"images/n056.jpg"},
       {id:57, name:"Triol Клетка для птиц 2101Z, цинк, 300*230*390мм", brand:"Triol", kind:"Клетка", category:"Клетки и переноски", price:48, tag:"Под заказ", image:"images/n057.jpg"},
-      {id:58, name:"Felix Аппетитные кусочки. Корм консерв. полнорац. для котов в ассорт., 75гр", brand:"Felix", kind:"Влажный корм", category:"Кошки", price:1.6, tag:"", image:"images/n058.jpg"},
-      {id:59, name:"Felix Вкусный паштет. Корм конс. полнорационный для котов в ассорт., 75гр", brand:"Felix", kind:"Влажный корм", category:"Кошки", price:1.6, tag:"", image:"images/n059.jpg"},
-      {id:60, name:"Felix Мясное объедение. Корм сух. полнорац. д/взр. котов, 200гр", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:4.6, tag:"", image:"images/n060.jpg"},
-      {id:61, name:"Felix. Двойная вкуснятина. Корм сух. полнорац. для котов в ассорт., 600г", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:12.4, tag:"", image:"images/n061.jpg"},
-      {id:62, name:"Felix®. Двойная Вкуснятина®. Корм сухой полнорационный для котов в ассорт., 10 кг", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:148.5, tag:"", image:"images/n062.jpg"},
-      {id:63, name:"Гурмэ Перл. Корм консерв. полнорационный для котов в ассорт., 75г", brand:"Гурмэ", kind:"Влажный корм", category:"Кошки", price:2.1, tag:"", image:"images/n063.jpg"},
+      {id:58, name:"Felix Аппетитные кусочки. Корм консерв. полнорац. для котов в ассорт., 75гр", brand:"Felix", kind:"Влажный корм", category:"Кошки", price:1.6, tag:"", image:"images/w_8976eb5645464632.jpg"},
+      {id:59, name:"Felix Вкусный паштет. Корм конс. полнорационный для котов в ассорт., 75гр", brand:"Felix", kind:"Влажный корм", category:"Кошки", price:1.6, tag:"", image:"images/w_8acf516ea4acf86b.jpg"},
+      {id:60, name:"Felix Мясное объедение. Корм сух. полнорац. д/взр. котов, 200гр", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:4.6, tag:"", image:"images/w_70ee24d9d971badc.jpg"},
+      {id:61, name:"Felix. Двойная вкуснятина. Корм сух. полнорац. для котов в ассорт., 600г", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:12.4, tag:"", image:"images/w_296a7c4ccc4639f2.jpg"},
+      {id:62, name:"Felix®. Двойная Вкуснятина®. Корм сухой полнорационный для котов в ассорт., 10 кг", brand:"Felix", kind:"Сухой корм", category:"Кошки", price:148.5, tag:"", image:"images/w_18a6d61da977b4c3.jpg"},
+      {id:63, name:"Гурмэ Перл. Корм консерв. полнорационный для котов в ассорт., 75г", brand:"Гурмэ", kind:"Влажный корм", category:"Кошки", price:2.1, tag:"", image:"images/w_d9230d8d9c260408.jpg"},
       {id:64, name:"ДАРЛИНГ. Корм консерв. полнорационный для собак в ассорт., 75г.", brand:"Дарлинг", kind:"Влажный корм", category:"Собаки", price:1.1, tag:"", image:"images/n064.jpg"},
       {id:65, name:"ДАРЛИНГ. Корм сухой полнорационный для собак в ассорт., 500гр", brand:"Дарлинг", kind:"Сухой корм", category:"Собаки", price:5.5, tag:"", image:"images/n065.jpg"},
       {id:66, name:"ДАРЛИНГ. Корм сух. полнорац. для собак в ассорт., 15 кг", brand:"Дарлинг", kind:"Сухой корм", category:"Собаки", price:112, tag:"", image:"images/n066.jpg"},
@@ -918,23 +1028,23 @@ footer .logo { font-size: 18px; }
       {id:68, name:"ДАРЛИНГ. Корм сух. полнорац. для кошек, 15 кг", brand:"Дарлинг", kind:"Сухой корм", category:"Кошки", price:175, tag:"", image:"images/n068.jpg"},
       {id:69, name:"Проплан паштет 75г д/кошек 7лет+ индейка, 75гр", brand:"Pro Plan", kind:"Влажный корм", category:"Кошки", price:3.6, tag:"", image:"images/n069.jpg"},
       {id:70, name:"Pro Plan. Корм конс. полнорационный для котят, 75гр.", brand:"Pro Plan", kind:"Влажный корм", category:"Кошки", price:3.6, tag:"", image:"images/n070.jpg"},
-      {id:71, name:"Pro Plan®. Корм консервированный полнорационный для кошек, в ассорт., 85гр.", brand:"Pro Plan", kind:"Влажный корм", category:"Кошки", price:3.6, tag:"", image:"images/n071.jpg"},
+      {id:71, name:"Pro Plan®. Корм консервированный полнорационный для кошек, в ассорт., 85гр.", brand:"Pro Plan", kind:"Влажный корм", category:"Кошки", price:3.6, tag:"", image:"images/w_4bc6a75f4a1cd862.jpg"},
       {id:72, name:"PPVD CN. Корм консерв. полнорац. диетич. д/кошек и собак всех возрастов при выздоровлении, 195гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:6.6, tag:"", image:"images/n072.jpg"},
       {id:73, name:"PRO PLAN VETERINARY DIETS EN St/Ox. Корм конс. полнорац. диетич. д/взр. кошек и котят при расстройствах пищеварения, 195гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:6.6, tag:"", image:"images/n073.jpg"},
       {id:74, name:"PRO PLAN VETERINARY DIETS UR St/Ox. Корм сухой полнорац. диетич. д/взр-х кошек при болезни нижн. отделов мочевывод-х путей, с курицей, 350гр", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:8.1, tag:"", image:"images/n074.jpg"},
       {id:75, name:"PRO PLAN VETERINARY DIETS EN St/Ox. Корм сухой полнорац. диетич. д/взр-х кошек и котят при расстр.пищеварения, 400 гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Кошки", price:12.5, tag:"", image:"images/n075.jpg"},
-      {id:76, name:"Pro Plan Корм сух. полнорац. для кошек в ассорт.,400гр", brand:"Pro Plan", kind:"Сухой корм", category:"Кошки", price:19.1, tag:"", image:"images/n076.jpg"},
+      {id:76, name:"Pro Plan Корм сух. полнорац. для кошек в ассорт.,400гр", brand:"Pro Plan", kind:"Сухой корм", category:"Кошки", price:19.1, tag:"", image:"images/w_ca222ef9f9b4134d.jpg"},
       {id:77, name:"Pro Plan . Корм сух. полнорац. для кошек в ассорт.,10кг", brand:"Pro Plan", kind:"Сухой корм", category:"Кошки", price:396.6, tag:"", image:"images/n077.jpg"},
       {id:78, name:"PRO PLAN VETERINARY DIETS NF. Корм конс. полнорац. Диетический для собак, в ассорт., 400гр.", brand:"Pro Plan", kind:"Диетический корм", category:"Собаки", price:12.5, tag:"", image:"images/n078.jpg"},
       {id:79, name:"PRO PLAN JM. Корм сухой полнорац. д/щенков, взр-х и пожилых собак с питательными веществами для поддержки работы суставов и др., 12кг", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:295.1, tag:"", image:"images/n079.jpg"},
-      {id:80, name:"Pro Plan. Корм конс. полнорац. для собак в ассорт., 85гр", brand:"Pro Plan", kind:"Влажный корм", category:"Собаки", price:3.3, tag:"", image:"images/n080.jpg"},
+      {id:80, name:"Pro Plan. Корм конс. полнорац. для собак в ассорт., 85гр", brand:"Pro Plan", kind:"Влажный корм", category:"Собаки", price:3.3, tag:"", image:"images/w_8540cf76df7db7bb.jpg"},
       {id:81, name:"Pro Plan Корм сухой полнорац. для взр. собак и щенков мелких и карлик. пород, 700гр.", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:25.8, tag:"", image:"images/n081.jpg"},
       {id:82, name:"Pro Plan Корм сухой полнорац. для щенков крупных пород с атлет. телослож., 12кг.", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:296.4, tag:"", image:"images/n082.jpg"},
       {id:83, name:"Pro Plan Корм сухой полнорац. для взр. собак средних пород, 14 кг.", brand:"Pro Plan", kind:"Сухой корм", category:"Собаки", price:345.7, tag:"", image:"images/n083.jpg"},
       {id:84, name:"SIRIUS Сухой корм для взр.котов и котят, 400гр. в ассорт.", brand:"Sirius", kind:"Сухой корм", category:"Кошки", price:12.2, tag:"", image:"images/n084.jpg"},
       {id:85, name:"SIRIUS Сухой корм для кошек в ассорт., 10кг.", brand:"Sirius", kind:"Сухой корм", category:"Кошки", price:200.5, tag:"", image:"images/n085.jpg"},
       {id:86, name:"SIRIUS Сухой корм для собак, 15 кг.", brand:"Sirius", kind:"Сухой корм", category:"Собаки", price:246.4, tag:"", image:"images/n086.jpg"},
-      {id:87, name:"SIRIUS Влажный корм для котят и кошек в ассорт., 85 гр.", brand:"Sirius", kind:"Влажный корм", category:"Кошки", price:2.8, tag:"", image:"images/n087.jpg"},
+      {id:87, name:"SIRIUS Влажный корм для котят и кошек в ассорт., 85 гр.", brand:"Sirius", kind:"Влажный корм", category:"Кошки", price:2.8, tag:"", image:"images/w_5fd0090b0d72b65e.jpg"},
       {id:88, name:"SIRIUS Конс для щенков и мал/сред пород собак, 100 гр.", brand:"Sirius", kind:"Влажный корм", category:"Собаки", price:3, tag:"", image:"images/n088.jpg"},
       {id:89, name:"НАШ РАЦИОН Сухой корм для кошек, 10кг", brand:"Наш рацион", kind:"Сухой корм", category:"Кошки", price:107.7, tag:"", image:"images/n089.jpg"},
       {id:90, name:"НАШ РАЦИОН Сухой корм для собак и щенков, 15кг", brand:"Наш рацион", kind:"Сухой корм", category:"Собаки", price:159.6, tag:"", image:"images/n090.jpg"},
@@ -944,13 +1054,181 @@ footer .logo { font-size: 18px; }
       {id:94, name:"Наполнитель CATPIX растительный в ассорт., 5л", brand:"CATPIX", kind:"Наполнитель", category:"Наполнители и туалеты", price:19, tag:"", image:"images/n094.jpg"},
       {id:95, name:"Наполнитель ТМ Питомец древесный элитный, 3л", brand:"Питомец", kind:"Наполнитель", category:"Наполнители и туалеты", price:7.9, tag:"", image:"images/n095.jpg"},
       {id:96, name:"Наполнитель ТМ Питомец древесный элитный, 5л.", brand:"Питомец", kind:"Наполнитель", category:"Наполнители и туалеты", price:10.4, tag:"", image:"images/n096.jpg"},
+      {id:97, name:"Корм Bambini Pets для хомяков, 800 г", brand:"Bambini Pets", kind:"Сухой корм", category:"Грызуны и птицы", price:13.61, tag:"", image:"images/w_957b196e12f21415.jpg"},
+      {id:98, name:"Корм Bambini Pets для крыс и мышей, 400 г", brand:"Bambini Pets", kind:"Сухой корм", category:"Грызуны и птицы", price:9.86, tag:"", image:"images/w_ad74fc000be08e56.jpg"},
+      {id:99, name:"Корм Bambini Pets для волнистых попугайчиков, 400 г", brand:"Bambini Pets", kind:"Сухой корм", category:"Грызуны и птицы", price:9.09, tag:"", image:"images/w_b5ad40298c120d54.jpg"},
+      {id:100, name:"V.A.D.C. (ВИ.ЭЙ.ДИ.ЭС.) «Активное очищение» зубная паста с ароматом говядины для собак и кошек, 50 мл", brand:"V.A.D.C.", kind:"Уход и гигиена", category:"Уход и гигиена", price:16.87, tag:"", image:"images/w_9fb850facc110370.jpg"},
+      {id:101, name:"V.A.D.C. (ВИ.ЭЙ.ДИ.ЭС.) «Укрепление пародонта» зубная паста с ароматом говядины для собак и кошек, 50 мл", brand:"V.A.D.C.", kind:"Уход и гигиена", category:"Уход и гигиена", price:16.87, tag:"", image:"images/w_534fe08e47fac9a7.jpg"},
+      {id:102, name:"Спрей ProPhyto ITCH PROTECT для кожи собак, противозудный, 100 мл", brand:"ProPhyto", kind:"Уход и гигиена", category:"Уход и гигиена", price:34.43, tag:"", image:"images/w_f66f1e061570f2ab.jpg"},
+      {id:103, name:"Раствор ProPhyto EAR PROTECT для чистки ушей собак и кошек с противовоспалительными свойствами, 100 мл", brand:"ProPhyto", kind:"Уход и гигиена", category:"Уход и гигиена", price:35.74, tag:"", image:"images/w_26e62431a219e086.jpg"},
+      {id:104, name:"Лежанка MidWest Deluxe Wave Bed для собак и кошек меховая 51х31,5х6,5 см, цвет песочный СПЕЦЦЕНА", brand:"MidWest", kind:"Лежанка", category:"Домики и лежанки", price:31.78, tag:"", image:"images/w_ef4cccd2ce22c75d.jpg"},
+      {id:105, name:"Лежанка MidWest Pet Bed для собак и кошек меховая 55х33 см, коричневая СПЕЦЦЕНА", brand:"MidWest", kind:"Лежанка", category:"Домики и лежанки", price:28.64, tag:"", image:"images/w_c1240c50b9d037ce.jpg"},
+      {id:106, name:"Лежанка MidWest Pet Bed для собак и кошек флисовая 60х45 см, белая СПЕЦЦЕНА", brand:"MidWest", kind:"Лежанка", category:"Домики и лежанки", price:39.49, tag:"", image:"images/w_9c66fb25f141f159.jpg"},
+      {id:107, name:"Влажный корм Monge Dog BWild GRAIN FREE Mini для взрослых собак мелких пород, беззерновой, в оссорт. консервы 400 г", brand:"Monge", kind:"Влажный корм", category:"Собаки", price:6.58, tag:"", image:"images/w_e0a6f9689055fffd.jpg"},
+      {id:108, name:"Влажный корм Monge Dog Fresh Chunks in Loaf для взрослых собак, мясной рулет из ягненка, консервы 400 г", brand:"Monge", kind:"Влажный корм", category:"Собаки", price:6.48, tag:"", image:"images/w_1589a8f52fa10a34.jpg"},
+      {id:109, name:"Сухой корм Monge Cat Daily Line для взрослых кошек, из курицы 400 г", brand:"Monge", kind:"Сухой корм", category:"Кошки", price:14.91, tag:"", image:"images/w_b7ed4c09681e6577.jpg"},
+      {id:110, name:"Сухой корм Monge Cat Daily Line Senior для пожилых кошек, с курицей 400 г", brand:"Monge", kind:"Сухой корм", category:"Кошки", price:16.56, tag:"", image:"images/w_4738ebe5df064f51.jpg"},
+      {id:111, name:"Сухой корм Monge Cat Speciality Line Monoprotein для котят и беременных кошек, из форели 400 г", brand:"Monge", kind:"Сухой корм", category:"Кошки", price:14.96, tag:"", image:"images/w_829781cfbca70bdb.jpg"},
+      {id:112, name:"Сухой корм Monge Dog Speciality Line Monoprotein Mini для щенков мелких пород, из ягненка с рисом 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:30.92, tag:"", image:"images/w_0da5d7ce53ea7dc8.jpg"},
+      {id:113, name:"Сухой корм Monge Dog Speciality Line Monoprotein Mini для взрослых собак мелких пород, из лосося с рисом 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:30.05, tag:"", image:"images/w_342d76f637c0bbff.jpg"},
+      {id:114, name:"Сухой корм Monge Dog Speciality Line Monoprotein Mini для взрослых собак мелких пород, из ягненка с рисом и картофелем 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:30.28, tag:"", image:"images/w_0f5c594534596f1a.jpg"},
+      {id:115, name:"Сухой корм Monge Dog Speciality Line Monoprotein Extra Small для взрослых собак миниатюрных пород, с лососем и рисом 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:32.34, tag:"", image:"images/w_2a358632acb55806.jpg"},
+      {id:116, name:"Сухой корм Monge Dog Speciality Line Puppy&Junior для щенков всех пород, из лосося с рисом 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:30.28, tag:"", image:"images/w_5aadf3c29719fa27.jpg"},
+      {id:117, name:"Влажный корм Monge Dog Fresh для собак, с ягненком, консервы 100 г", brand:"Monge", kind:"Влажный корм", category:"Собаки", price:3.21, tag:"", image:"images/w_ad8008b7d9db9d16.jpg"},
+      {id:118, name:"Сухой корм Monge Dog Speciality Line Puppy&Junior для щенков всех пород, из ягненка с рисом 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:29.18, tag:"", image:"images/w_b462d18d61059731.jpg"},
+      {id:119, name:"Сухой корм Monge Dog Speciality Line Extra Small для взрослых собак миниатюрных пород ягненок с рисом и картофелем 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:32.67, tag:"", image:"images/w_18b86ef77846d8e9.jpg"},
+      {id:120, name:"Сухой корм Monge Dog Daily Line Mini для щенков мелких пород, из курицы 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:26.93, tag:"", image:"images/w_58329878b4e6d8f9.jpg"},
+      {id:121, name:"Сухой корм Monge Dog Daily Line Mini для взрослых собак мелких пород, из курицы 800 г", brand:"Monge", kind:"Сухой корм", category:"Собаки", price:22.87, tag:"", image:"images/w_27691f38db7c1654.jpg"},
+      {id:122, name:"Диетический корм Monge VetSolution Cat Dermatosis Дерматозис для кошек при заболеваниях кожи 400 г", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:25.7, tag:"", image:"images/w_346598afeab635ef.jpg"},
+      {id:123, name:"Диетический корм Monge VetSolution Cat Obesity Обесити для кошек при избыточном весе 400 г", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:24.96, tag:"", image:"images/w_a181fcc1eee527c4.jpg"},
+      {id:124, name:"Диетический корм Monge VetSolution Cat Hepatic Гепатик для кошек при заболеваниях печени 400 г.", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:24.96, tag:"", image:"images/w_e0bb0f660ab188ae.jpg"},
+      {id:125, name:"Диетический корм Monge VetSolution Cat Renal Ренал для кошек при ХПН 1,5 кг", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:77.32, tag:"", image:"images/w_2ad2a451c58b79f5.jpg"},
+      {id:126, name:"Диетический корм Monge VetSolution Cat Urinary Oxalate Уринари Оксалат для кошек при заболеваниях мочеполовой системы и оксалатном течении МКБ 400 г", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:25.7, tag:"", image:"images/w_70113871cdef1abb.jpg"},
+      {id:127, name:"Диетический корм Monge VetSolution Cat Gastrointestinal гастро интестинал для кошек при заболеваниях ЖКТ 100 г", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:3.75, tag:"", image:"images/w_424a8cef8b3737f8.jpg"},
+      {id:128, name:"Диетический корм Monge VetSolution Cat Renal and Oxalate Ренал и Оксалат для кошек при ХПН и профилактике образования оксалатов 100 г", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:3.75, tag:"", image:"images/w_4a281f44c254dfa9.jpg"},
+      {id:129, name:"Диетический корм Monge VetSolution Dog Gastrointestinal Гастроинтестинал для щенков 1,5 кг", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:67.5, tag:"", image:"images/w_47ed36cdb2b56668.jpg"},
+      {id:130, name:"Диетический корм Monge VetSolution Dog Gastrointestinal Гастроинтестинал для собак при заболеваниях ЖКТ 2 кг", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:89.52, tag:"", image:"images/w_d8edb5a9df65cc2a.jpg"},
+      {id:131, name:"Диетический корм Monge VetSolution Dog Renal and Oxalate Ренал и Оксалат для собак при ХПН 2 кг", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:93.99, tag:"", image:"images/w_4a4ab5b62f42eaed.jpg"},
+      {id:132, name:"Диетический корм Monge VetSolution Dog Joint Mobility Джоинт Мобилити для собак и щенков при заболеваниях суставов 2 кг", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:89.52, tag:"", image:"images/w_319f554c7017c830.jpg"},
+      {id:133, name:"Диетический корм Monge VetSolution Dog Obesity Обесити диета для собак при избыточном весе 2 кг", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:89.52, tag:"", image:"images/w_a4cb8a206d8d5d3d.jpg"},
+      {id:134, name:"Диетический корм Monge VetSolution Dog Gastrointestinal Гастроинтестинал для собак при заболеваниях ЖКТ 150 г", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:4.6, tag:"", image:"images/w_0e3d624929b4ed34.jpg"},
+      {id:135, name:"Сухой корм AWARD SPECIAL CARE HYPO PUPPY со свежей белой рыбой для щенков от 1 месяца, беременных и кормящих собак всех пород, склонных к аллергии 2кг", brand:"AWARD", kind:"Сухой корм", category:"Собаки", price:73.22, tag:"", image:"images/w_7fe679c0b705e2ea.jpg"},
+      {id:136, name:"Сухой корм AWARD SPECIAL CARE Sensitive Digestion для взрослых собак всех пород с чувствительным пищеварением со свежим мясом ягненка 2кг", brand:"AWARD", kind:"Сухой корм", category:"Собаки", price:65.37, tag:"", image:"images/w_762bb169e7d2c98b.jpg"},
+      {id:137, name:"Сухой корм AWARD для щенков от 1 мес, беременных и кормящих сук мелких и мин. пород с ягненком и индейкой с добавлением брокколи и брусники 800г", brand:"AWARD", kind:"Сухой корм", category:"Собаки", price:26.12, tag:"", image:"images/w_05aca0d3bb38bf78.jpg"},
+      {id:138, name:"Сухой корм AWARD для щенков от 1 мес, беременных и кормящих сук средних пород с индейкой и курицей с добавлением моркови и черной смородины 2кг", brand:"AWARD", kind:"Сухой корм", category:"Собаки", price:53.12, tag:"", image:"images/w_2d4874398080d87a.jpg"},
+      {id:139, name:"Сухой корм AWARD для взрослых собак мелких и миниатюрных пород с ягненком и индейкой с добавлением брокколи и брусники 800г", brand:"AWARD", kind:"Сухой корм", category:"Собаки", price:24.76, tag:"", image:"images/w_ee463f53617b4208.jpg"},
+      {id:140, name:"Сухой корм AWARD Monoprotein для взрослых собак мелких и миниатюрных пород из лосося с добавлением семян льна и алоэ вера 800г", brand:"AWARD", kind:"Сухой корм", category:"Собаки", price:37.66, tag:"", image:"images/w_ec98e4e51050b483.jpg"},
+      {id:141, name:"Диетический корм AWARD VETERINARY DIET RENAL для взрослых собак при заболеваниях почек 2 кг", brand:"AWARD", kind:"Диетический корм", category:"Собаки", price:76.92, tag:"", image:"images/w_aefbaec7c0696252.jpg"},
+      {id:142, name:"Диетический корм AWARD VETERINARY DIET GASTROINTESTINAL LOW FAT для взрослых собак при заболеваниях желудочно-кишечного тракта 2 кг", brand:"AWARD", kind:"Диетический корм", category:"Собаки", price:76.92, tag:"", image:"images/w_53ef89c1118272c2.jpg"},
+      {id:143, name:"Диетический корм AWARD VETERINARY DIET HYPOALLERGENIC для взрослых собак при аллергии или пищевой непереносимости 2 кг", brand:"AWARD", kind:"Диетический корм", category:"Собаки", price:93.79, tag:"", image:"images/w_da938df0b458900c.jpg"},
+      {id:144, name:"AWARD STERILIZED ADULT. Полнорационный сбалансированный сухой корм для взрослых стерилизованных кошек с индейкой и курицей с добавлением клюквы и цикория, 400 г", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:15.49, tag:"", image:"images/w_eeb632b57197bf14.jpg"},
+      {id:145, name:"Сухой корм AWARD Sterilized для взрослых стерилизованных кошек с белой рыбой с добавлением семян льна, клюквы и цикория 400г", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:17.06, tag:"", image:"images/w_89c767cf048537da.jpg"},
+      {id:146, name:"Сухой корм AWARD Urinary для взрослых кошек для профилактики мочекаменной болезни с курицей с добавлением клюквы, цикория и рыбьего жира 400г", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:15.49, tag:"", image:"images/w_166ed9bbb158fcd4.jpg"},
+      {id:147, name:"Сухой корм AWARD Indoor Big cats для взрослых домашних кошек крупных пород с говядиной и курицей с добавлением брокколи и юкки Шидигера 400г", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:15.49, tag:"", image:"images/w_83473dcbbb0a5ea3.jpg"},
+      {id:148, name:"Сухой корм AWARD SPECIAL CARE Sensitive Digestion для взрослых кошек с чувствительным пищеварением со свежим мясом утки 1,5кг", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:51.36, tag:"", image:"images/w_0e542f9e73cd0469.jpg"},
+      {id:149, name:"Сухой корм AWARD SPECIAL CARE Weight Control для взрослых стерилизованных кошек для контроля веса со свежим мясом кролика 1,5кг", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:51.36, tag:"", image:"images/w_45a90599820fba61.jpg"},
+      {id:150, name:"Сухой корм AWARD Monoprotein для взрослых стерилизованных кошек из лосося с добавлением спаржи и ацеролы 400г", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:21.24, tag:"", image:"images/w_c22c4b92d61a4c39.jpg"},
+      {id:151, name:"Сухой корм AWARD Monoprotein для взрослых кошек из индейки с добавлением яблока и артишока 400г", brand:"AWARD", kind:"Сухой корм", category:"Кошки", price:19.27, tag:"", image:"images/w_2bdacb98b1d6502c.jpg"},
+      {id:152, name:"Диетический корм AWARD VETERINARY DIET HYPOALLERGENIC для взрослых кошек при аллергии или пищевой непереносимости 400 г", brand:"AWARD", kind:"Диетический корм", category:"Кошки", price:22.05, tag:"", image:"images/w_d57cf548059fc09f.jpg"},
+      {id:153, name:"Диетический корм AWARD VETERINARY DIET GASTROINTESTINAL для взрослых кошек при заболеваниях желудочно-кишечного тракта 400 г", brand:"AWARD", kind:"Диетический корм", category:"Кошки", price:20.86, tag:"", image:"images/w_ac146dfc3c9b6052.jpg"},
+      {id:154, name:"Диетический корм AWARD VETERINARY DIET RENAL для взрослых кошек при заболеваниях почек 400 г", brand:"AWARD", kind:"Диетический корм", category:"Кошки", price:20.86, tag:"", image:"images/w_9e03f4ed9fc40d2a.jpg"},
+      {id:155, name:"Диетический корм AWARD VETERINARY DIET URINARY для взрослых кошек при мочекаменной болезни струвитного типа 400 г", brand:"AWARD", kind:"Диетический корм", category:"Кошки", price:22.05, tag:"", image:"images/w_2e9fb2d603b0378a.jpg"},
+      {id:156, name:"Влажный корм AWARD для котят и взрослых кошек, паштет в ассорт. 100г", brand:"AWARD", kind:"Влажный корм", category:"Кошки", price:5.34, tag:"", image:"images/w_18a881002f95abe9.jpg"},
+      {id:157, name:"Влажный дополнит. корм AWARD SPECIAL CARE \"мясное пюре\" для взрослых кошек и котят в ассорт. 100 г", brand:"AWARD", kind:"Влажный корм", category:"Кошки", price:5.47, tag:"", image:"images/w_fe1f446872550c36.jpg"},
+      {id:158, name:"Влажный корм Мнямс Деликатес Куриное филе в ассорт. для кошек 50 г", brand:"Мнямс", kind:"Влажный корм", category:"Кошки", price:3.6, tag:"", image:"images/w_dc2f4f0b23d8b921.jpg"},
+      {id:159, name:"Лакомство Ферма кота Федора лакомые палочки для кошек и котят в ассорт. 3 х 5 г", brand:"Ферма кота Федора", kind:"Лакомство", category:"Кошки", price:2.32, tag:"", image:"images/w_e0648238af1da313.jpg"},
+      {id:160, name:"Влажный дополнительный корм Мнямс На каждый день Мусс для собак и щенков старше 6 месяцев 80 г в ассорт.", brand:"Мнямс", kind:"Влажный корм", category:"Собаки", price:5.39, tag:"", image:"images/w_d706243efd1767db.jpg"},
+      {id:161, name:"Лакомство Мнямс На каждый день для собак Тренировочные \"Косточки\" и \"Сердечки\" 90 г", brand:"Мнямс", kind:"Лакомство", category:"Собаки", price:7.4, tag:"", image:"images/w_2b1de82b32fb866f.jpg"},
+      {id:162, name:"Wanpy Cat Лакомство для кошек Мясной мусс в ассорт. 90 г", brand:"Wanpy", kind:"Лакомство", category:"Кошки", price:5.57, tag:"", image:"images/w_1153982aaff2ddf4.jpg"},
+      {id:163, name:"Wanpy Cat Лакомство для кошек «нежное пюре» в ассорт. 70 г", brand:"Wanpy", kind:"Лакомство", category:"Кошки", price:4.59, tag:"", image:"images/w_1e3d073e315ee046.jpg"},
+      {id:164, name:"Wanpy Cat Дополнительный консервированный корм пауч для кошек в собственному соку в ассорт. 70 г", brand:"Wanpy", kind:"Влажный корм", category:"Кошки", price:2.53, tag:"", image:"images/w_d9c008aa6ec9ea54.jpg"},
+      {id:165, name:"Wanpy Cat Консервы для кошек в ассорт. 95 г", brand:"Wanpy", kind:"Влажный корм", category:"Кошки", price:4.69, tag:"", image:"images/w_ecdaa7eac3841407.jpg"},
+      {id:166, name:"Wanpy Dog Лакомство для собак Мясной мусс 90 г", brand:"Wanpy", kind:"Лакомство", category:"Собаки", price:5.57, tag:"", image:"images/w_ab3b865edf4ec5b5.jpg"},
+      {id:167, name:"Влажный корм AWARD Monoprotein для взрослых собак паштет в ассорт. 100г", brand:"AWARD", kind:"Влажный корм", category:"Собаки", price:5.02, tag:"", image:"images/w_46030276b36c35cb.jpg"},
+      {id:168, name:"Влажный корм AWARD для котят и взрослых кошек в ассорт. в соусе 85г", brand:"AWARD", kind:"Влажный корм", category:"Кошки", price:2.85, tag:"", image:"images/w_10f120fa31b2cf23.jpg"},
+      {id:169, name:"Ветеринарная диета Monge для собак в ассорт. 400г.", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:9.2, tag:"", image:"images/w_37b5ea19e41888a5.jpg"},
+      {id:170, name:"Ветеринарная диета Monge для собак в ассорт., ламистер 150г", brand:"Monge", kind:"Диетический корм", category:"Собаки", price:4.6, tag:"", image:"images/w_1c51bc3300499b71.jpg"},
+      {id:171, name:"Ветеринарная диета Monge VetSolution для кошек в ассорт., ламистер 100г", brand:"Monge", kind:"Диетический корм", category:"Кошки", price:3.8, tag:"", image:"images/w_bfae7d07ee636292.jpg"},
+      {id:172, name:"Влажный корм Monge Dog Monoprotein для собак, в ассорт., консервы 400 г", brand:"Monge", kind:"Влажный корм", category:"Собаки", price:11.6, tag:"", image:"images/w_a215479a1178eb01.jpg"},
+      {id:173, name:"Влажный корм Monge Monoprotein для собак, в ассорт., ламистер 150 г", brand:"Monge", kind:"Влажный корм", category:"Собаки", price:8.3, tag:"", image:"images/w_b0a1ad4dba8dcc00.jpg"},
+      {id:174, name:"Влажный корм Monge Dog Grill для собак в ассорт., паучи 100 г", brand:"Monge", kind:"Влажный корм", category:"Собаки", price:2.8, tag:"", image:"images/w_91193a25d0eb1025.jpg"},
+      {id:175, name:"Влажный корм Monge Dog Fruit для собак,в ассорт., консервы 100 г", brand:"Monge", kind:"Влажный корм", category:"Собаки", price:3.6, tag:"", image:"images/w_9118699db583b7aa.jpg"},
+      {id:176, name:"Влажный корм Monge Cat кошек, в ассорт., паучи 85 г", brand:"Monge", kind:"Влажный корм", category:"Кошки", price:3, tag:"", image:"images/w_d35b69fb61b8e6cd.jpg"},
+      {id:177, name:"Влажный корм Monge Cat BWild GRAIN FREE для стерилизованных кошек, беззерновой,в ассорт., ламистер 100 г", brand:"Monge", kind:"Влажный корм", category:"Кошки", price:3.8, tag:"", image:"images/w_d8489f6afe13cb23.jpg"},
+      {id:178, name:"Влажный корм Monge Cat BWild GRAIN FREE для котят и кошек,паучи 85 г", brand:"Monge", kind:"Влажный корм", category:"Кошки", price:3.1, tag:"", image:"images/w_49cb914a90ee9a81.jpg"},
+      {id:179, name:"Влажный корм Monge Cat Monoprotein для взрослых кошек, в ассорт. паучи 85 г", brand:"Monge", kind:"Влажный корм", category:"Кошки", price:2.8, tag:"", image:"images/w_b4a09a3ab9650c7b.jpg"},
+      {id:180, name:"Bunny подстилка древесная (из опилок) 1 кг (12 л.)", brand:"Bunny", kind:"Наполнитель", category:"Наполнители и туалеты", price:4.02, tag:"", image:"images/w_aef9fc475e6a116d.jpg"},
+      {id:181, name:"Bunny сено луговое 500 г. (15 л.)", brand:"Bunny", kind:"Сено", category:"Аксессуары", price:3.47, tag:"", image:"images/w_46afdee40b925263.jpg"},
+      {id:182, name:"Bunny сено луговое с ромашкой 500 г. (15 л.)", brand:"Bunny", kind:"Сено", category:"Аксессуары", price:4.02, tag:"", image:"images/w_219b06432cb3cabd.jpg"},
+      {id:183, name:"КОТУ древесный наполнитель Хвойный 12 л. (4,5 кг.)", brand:"КОТУ", kind:"Наполнитель", category:"Наполнители и туалеты", price:8.75, tag:"", image:"images/w_f54cf0ec1a0e0399.jpg"},
+      {id:184, name:"КОТУ древесный наполнитель Хвойный 6 л. (2,35 кг.)", brand:"КОТУ", kind:"Наполнитель", category:"Наполнители и туалеты", price:4.86, tag:"", image:"images/w_4f843b1f0109112e.jpg"},
+      {id:185, name:"Little One Мучной червь - Лакомство для всеядных грызунов, 70гр", brand:"Little One", kind:"Лакомство", category:"Грызуны и птицы", price:13.64, tag:"", image:"images/w_2fa56565d1459e29.jpg"},
+      {id:186, name:"Little One Смесь насекомых - Лакомство для всеядных грызунов, 75гр", brand:"Little One", kind:"Лакомство", category:"Грызуны и птицы", price:14.87, tag:"", image:"images/w_9b8803d04dfbab76.jpg"},
+      {id:187, name:"Little One Колечко с фруктами и орехами. Лакомство для хомячков, крыс, мышей и песчанок, 55 г", brand:"Little One", kind:"Лакомство", category:"Грызуны и птицы", price:8.02, tag:"", image:"images/w_5348c534ba6a7b2f.jpg"},
+      {id:188, name:"Little One Колечко с травами и зеленью. Лакомство для морских свинок, кроликов, шиншилл и дегу, 50 г", brand:"Little One", kind:"Лакомство", category:"Грызуны и птицы", price:8.02, tag:"", image:"images/w_acaf3e8b7af93658.jpg"},
+      {id:189, name:"RIO Семена луговых трав. Лакомство для всех видов птиц, 240 г", brand:"RIO", kind:"Лакомство", category:"Грызуны и птицы", price:8.89, tag:"", image:"images/w_e26920847c56ce6e.jpg"},
+      {id:190, name:"RIO Гурмэ корм для средних и крупных попугаев, 250 г", brand:"RIO", kind:"Сухой корм", category:"Грызуны и птицы", price:13.67, tag:"", image:"images/w_5bab256fda86c04c.jpg"},
+      {id:191, name:"RIO Яичный корм для средних и крупных попугаев, 250 г", brand:"RIO", kind:"Сухой корм", category:"Грызуны и птицы", price:12.78, tag:"", image:"images/w_b28ccb5ae3d7ec10.jpg"},
+      {id:192, name:"RIO Овощная смесь. Лакомство для средних и крупных попугаев, 150 г", brand:"RIO", kind:"Лакомство", category:"Грызуны и птицы", price:13.28, tag:"", image:"images/w_f7f77ad11b5c6deb.jpg"},
+      {id:193, name:"RIO Палочки для волнистых попугайчиков и экзотов Витамин С, 2х40 г", brand:"RIO", kind:"Лакомство", category:"Грызуны и птицы", price:9.22, tag:"", image:"images/w_537ae1cd09f7c597.jpg"},
+      {id:194, name:"RIO Палочки для волнистых попугаев и экзотических птиц с тропическими фруктами, 2х40г", brand:"RIO", kind:"Лакомство", category:"Грызуны и птицы", price:9.22, tag:"", image:"images/w_3508fe4c6b1c1756.jpg"},
+      {id:195, name:"Little One Корм для мышей, 400 г", brand:"Little One", kind:"Сухой корм", category:"Грызуны и птицы", price:8.51, tag:"", image:"images/w_bc8335f4bb47dbf2.jpg"},
+      {id:196, name:"Little One Корм для крыс, 400 г", brand:"Little One", kind:"Сухой корм", category:"Грызуны и птицы", price:8.54, tag:"", image:"images/w_e96d52d031400289.jpg"},
+      {id:197, name:"Little One Корм для морских свинок, 400 г", brand:"Little One", kind:"Сухой корм", category:"Грызуны и птицы", price:9.33, tag:"", image:"images/w_399e8332563455c5.jpg"},
+      {id:198, name:"Little One Корм для хомячков, 400 г", brand:"Little One", kind:"Сухой корм", category:"Грызуны и птицы", price:8.54, tag:"", image:"images/w_ecea7101003b3e2d.jpg"},
+      {id:199, name:"Little One Корм для шиншилл, 400 г", brand:"Little One", kind:"Сухой корм", category:"Грызуны и птицы", price:8.85, tag:"", image:"images/w_dc11e043322d1057.jpg"},
+      {id:200, name:"RIO Корм для волнистых попугайчиков, пакет 500 г", brand:"RIO", kind:"Сухой корм", category:"Грызуны и птицы", price:7.52, tag:"", image:"images/w_f12c32ce5d254729.jpg"},
+      {id:201, name:"ProBalance 400 гр 1'st Diet Корм сухой д/котят c цыпленком", brand:"ProBalance", kind:"Сухой корм", category:"Кошки", price:8.41, tag:"", image:"images/w_dda148d8a29af2d8.jpg"},
+      {id:202, name:"Probalance 400 гр Adult Light Turkey для взрослых кошек всех пород с индейкой", brand:"ProBalance", kind:"Сухой корм", category:"Кошки", price:7.95, tag:"", image:"images/w_af4f69ea823630b9.jpg"},
+      {id:203, name:"Probalance 400 гр Adult Sterilized Duck корм сухой для взрослых кастр/стер котов всех пород с уткой", brand:"ProBalance", kind:"Сухой корм", category:"Кошки", price:7.95, tag:"", image:"images/w_2873e6f40ff240ec.jpg"},
+      {id:204, name:"ProBalance 85г 1'st Diet корм д/котят и взрослых кошек в ассорт. в желе", brand:"ProBalance", kind:"Влажный корм", category:"Кошки", price:1.28, tag:"", image:"images/w_ecd2f2bbd759e643.jpg"},
+      {id:205, name:"ProBalance 85г Puppy Immuno для щенков и взрослых собак в ассорт.", brand:"ProBalance", kind:"Влажный корм", category:"Собаки", price:1.21, tag:"", image:"images/w_25497163e51ed62f.jpg"},
+      {id:206, name:"Витаминизированное лакомство GimCat Nutri Pockets для кошек, мята и мультивитамины, 60 г", brand:"GimCat", kind:"Лакомство", category:"Кошки", price:6.74, tag:"", image:"images/w_a6cba4d957374a38.jpg"},
+      {id:207, name:"Витаминизированное лакомство GimCat Nutri Pockets Junior Mix для котят, сыр, молоко, йогурт, 60 г", brand:"GimCat", kind:"Лакомство", category:"Кошки", price:6.74, tag:"", image:"images/w_5f0d3f3fcedb6f10.jpg"},
+      {id:208, name:"Витаминизированное лакомство GimCat, палочки, для кошек, лосось и треска, 4 шт.", brand:"GimCat", kind:"Лакомство", category:"Кошки", price:6.72, tag:"", image:"images/w_28c3778c2c1a0270.jpg"},
+      {id:209, name:"Витаминизированное лакомство GimCat, палочки, для кошек, индейка и кролик, 4 шт.", brand:"GimCat", kind:"Лакомство", category:"Кошки", price:6.72, tag:"", image:"images/w_999d8bea7bc91312.jpg"},
+      {id:210, name:"PBG02 Papa&Mama Pet Складная сумка-переноска для кошек и мелких собак М (42смх28смх32см)", brand:"Papa&Mama", kind:"Переноска", category:"Кошки", price:86.96, tag:"", image:"images/w_0272d112800ff652.jpg"},
+      {id:211, name:"CB0014-5 Papa&Mama Pet Рюкзак кенгуру для кошек и мелких собак S 28х17см", brand:"Papa&Mama", kind:"Переноска", category:"Кошки", price:34.52, tag:"", image:"images/w_f3542a1c8f360939.jpg"},
+      {id:212, name:"Papa&Mama Pet Мелок для грызунов и кроликов 32г.", brand:"Papa&Mama", kind:"Лакомство", category:"Грызуны и птицы", price:4.24, tag:"", image:"images/w_2bf98481b83c0c59.jpg"},
+      {id:213, name:"Papa&Mama Pet мелок для птиц 16 г", brand:"Papa&Mama", kind:"Лакомство", category:"Грызуны и птицы", price:3.4, tag:"", image:"images/w_fd160742244be235.jpg"},
+      {id:214, name:"М 1812-А, капучино Миска для животных ТВИКС МИНИ", brand:"ТВИКС", kind:"Миска", category:"Аксессуары", price:12.44, tag:"", image:"images/w_82c1a674864b10fd.jpg"},
+      {id:215, name:"М 1805-А, Морская волна Миска для медленного кормления ВОЛНА", brand:"ВОЛНА", kind:"Миска", category:"Аксессуары", price:6.48, tag:"", image:"images/w_2a1bc4743e9a9ecc.jpg"},
+      {id:216, name:"Лакомство для собак Легкое говяжье мелкое суш., 45 гр", brand:"", kind:"Лакомство", category:"Собаки", price:7.52, tag:"", image:"images/w_491daeae1f7b4bcb.jpg"},
+      {id:217, name:"Лакомство для собак Корень бычий суш., 2шт", brand:"", kind:"Лакомство", category:"Собаки", price:18.53, tag:"", image:"images/w_3132a58fd10443a0.jpg"},
+      {id:218, name:"Лакомство для собак Трахея говяжья суш., 35гр", brand:"", kind:"Лакомство", category:"Собаки", price:6.04, tag:"", image:"images/w_922b5ac0cc0a9e34.jpg"},
+      {id:219, name:"Лакомство для собак Микс ( Легкое говяжье/трахея говяжья)суш., 30гр", brand:"", kind:"Лакомство", category:"Собаки", price:5.61, tag:"", image:"images/w_d33b9cb6f188f874.jpg"},
+      {id:220, name:"Салфетки влажные \"АЙДА ГУЛЯТЬ!\" д/глаз и ушей, 80шт", brand:"Айда Гулять", kind:"Уход и гигиена", category:"Уход и гигиена", price:23.25, tag:"", image:"images/w_47ef5ca332c9bddc.jpg"},
+      {id:221, name:"Josera MINI Junior with Duck&Salmon для щенков и взрослых собак мелких пород, для здровой кожи и шерсти, много утки 23% и лосось 4%.900г", brand:"Josera", kind:"Сухой корм", category:"Собаки", price:19.2, tag:"", image:"images/w_01484d63e608266e.jpg"},
+      {id:222, name:"Josera MINI Lamb&Sweet Potato беззерновой корм для мелких пород с ягненком и сладким картофелем, 900гр", brand:"Josera", kind:"Сухой корм", category:"Аксессуары", price:23.3, tag:"", image:"images/w_10c3444b7e86521e.jpg"},
+      {id:223, name:"Josera Kitten Grainfree беззерновой корм с мясом домашней птицы, для котят до 12 месяцев, а также для беременных и кормящих кошек, 2кг", brand:"Josera", kind:"Сухой корм", category:"Кошки", price:60.3, tag:"", image:"images/w_ec0565d75a3c1ecb.jpg"},
+      {id:224, name:"Josera Culinesse для привередливых кошек, с добавлением лосося 6%,2 кг", brand:"Josera", kind:"Сухой корм", category:"Кошки", price:49.3, tag:"", image:"images/w_79932084140638fb.jpg"},
+      {id:225, name:"Josera NatureCat беззерновой корм для кошек с чувствительным пищеварением и котят от 6 месяцев, на основе мяса домашней птицы 29% и лосося 10%, 2 кг", brand:"Josera", kind:"Сухой корм", category:"Кошки", price:56.2, tag:"", image:"images/w_668ac1afb5a4062a.jpg"},
+      {id:226, name:"Josera Marinesse для кошек неравнодушных к рыбе и страдающих пищевой непереносимостью, включает в себя белки лосося, риса и картофеля, 2 кг", brand:"Josera", kind:"Сухой корм", category:"Кошки", price:58.9, tag:"", image:"images/w_6346c63ff98f2f6f.jpg"},
+      {id:227, name:"Josera Indoor беззерновой корм для домашних и стерилизованных кошек, мясо домашней птицы и рыбы с чечевицей, 2 кг", brand:"Josera", kind:"Сухой корм", category:"Кошки", price:56.2, tag:"", image:"images/w_a326188513d6b386.jpg"},
+      {id:228, name:"Josera DailyCat беззерновой корм для взрослых кошек с чуствительным пищеварением, на основе мяса домашней птицы с бататом, 2 кг", brand:"Josera", kind:"Сухой корм", category:"Кошки", price:49.3, tag:"", image:"images/w_67d6a43c683a18e7.jpg"},
+      {id:229, name:"Josera Нelp Gastro Dog для взрослых собак при заболеваниях желудочно-кишечного тракта, 0,9кг", brand:"Josera", kind:"Диетический корм", category:"Собаки", price:21.9, tag:"", image:"images/w_5e3b92f94ccebac4.jpg"},
+      {id:230, name:"Josera Нelp Weight&Diabetic Dog для взрослых собак при избыточном весе и/или диабете, 0,9кг", brand:"Josera", kind:"Диетический корм", category:"Собаки", price:19.2, tag:"", image:"images/w_1f98a9034b30d506.jpg"},
+      {id:231, name:"Josera Нelp Renal Cat для взрослых кошек с хронической болезнью почек, 2 кг", brand:"Josera", kind:"Диетический корм", category:"Кошки", price:54.8, tag:"", image:"images/w_f55edae2111a49b3.jpg"},
+      {id:232, name:"Josera Нelp Weight&Diabetic Cat для взрослых кошек при избыточном весе и/или диабете, 2 кг", brand:"Josera", kind:"Диетический корм", category:"Кошки", price:52.1, tag:"", image:"images/w_55ac5d4d3dba073a.jpg"},
+      {id:233, name:"Сухой корм для собак WILD RECIPE NG 2 кг,Испания", brand:"NG", kind:"Сухой корм", category:"Собаки", price:49.2, tag:"", image:"images/w_026c4ef1a1f99311.jpg"},
+      {id:234, name:"Сухой корм для собак( в том числе для щенков) LAMB RECIPE SENSITIVE STARTER PUPPY&ADULT MINI NG 2кг, шт/к8425402400470 /Испания", brand:"NG", kind:"Сухой корм", category:"Собаки", price:52.41, tag:"", image:"images/w_90f59df6da1edc25.jpg"},
+      {id:235, name:"Сухой корм для собак TURKEY RECIPE NG 2кг, Испания", brand:"NG", kind:"Сухой корм", category:"Собаки", price:43.8, tag:"", image:"images/w_4fa576c7c121b203.jpg"},
+      {id:236, name:"Сухой корм для кошек CAT FIELD&RIVER NG 600гр,Испания", brand:"NG", kind:"Сухой корм", category:"Кошки", price:29.4, tag:"", image:"images/w_dbbdd8c49f26d6fe.jpg"},
+      {id:237, name:"Сухой корм для кошек CAT SENSITIVE INDOOR NG 600гр, шт/к 8425402400067 /Испания", brand:"NG", kind:"Сухой корм", category:"Кошки", price:22.8, tag:"", image:"images/w_6494b4523f89acff.jpg"},
+      {id:238, name:"Сухой корм для кошек RECETA CAT TOP MOUNTAIN NG 600гр, Испания", brand:"NG", kind:"Сухой корм", category:"Кошки", price:28.2, tag:"", image:"images/w_d9527202a9ba191c.jpg"},
+      {id:239, name:"Сухой корм для котят CAT WILD INSTINCT BABY&KITTEN NG 600гр, Испания", brand:"NG", kind:"Сухой корм", category:"Кошки", price:24.6, tag:"", image:"images/w_146c0fdbd41ec33f.jpg"},
+      {id:240, name:"Сухой корм для собак NATURAL WOODLAND COUNTRY DIET 2кг, Испания", brand:"Natural Woodland", kind:"Сухой корм", category:"Собаки", price:39, tag:"", image:"images/w_46873ba53382905d.jpg"},
+      {id:241, name:"Сухой корм для собак NATURAL WOODLAND OCEAN DIET 2кг, Испания", brand:"Natural Woodland", kind:"Сухой корм", category:"Собаки", price:43.2, tag:"", image:"images/w_fda481141c938093.jpg"},
+      {id:242, name:"Сухой корм для кошек и котят NATURAL WOODLAND BACKWOODS DIET FOR CAT &KITTEN 1.5 кг, Испания", brand:"Natural Woodland", kind:"Сухой корм", category:"Кошки", price:42.6, tag:"", image:"images/w_7573129504f4a955.jpg"},
+      {id:243, name:"Сухой корм для кошек NATURAL WOODLAND REALM DIET 1.5 кг, Испания", brand:"Natural Woodland", kind:"Сухой корм", category:"Кошки", price:40.2, tag:"", image:"images/w_3ae364c79aa41e16.jpg"},
+      {id:244, name:"Сухой корм для собак Vet Diet Urinary Struvite NG Dog 2 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Собаки", price:59.4, tag:"", image:"images/w_6e2707453b4fbf9c.jpg"},
+      {id:245, name:"Сухой корм для собакVet Diet Renal-Oxalate NG Dog 2 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Собаки", price:59.4, tag:"", image:"images/w_1e4bea3044be0030.jpg"},
+      {id:246, name:"Сухой корм для собакVet Diet Mobility NG Dog 2 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Собаки", price:57.6, tag:"", image:"images/w_1eb0f7688419a0d4.jpg"},
+      {id:247, name:"Сухой корм для собак Vet DietHepatic -Cardiac NG Dog 2 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Собаки", price:56.14, tag:"", image:"images/w_b228f91c71abaab1.jpg"},
+      {id:248, name:"Сухой корм для собакVet Diet Obesity NG Dog 2 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Собаки", price:57, tag:"", image:"images/w_58abcee54ac4a5cc.jpg"},
+      {id:249, name:"Сухой корм для кошек Vet Diet Gastrointestinal NG Cat 1.5 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Кошки", price:58.8, tag:"", image:"images/w_a2cca4bc78615190.jpg"},
+      {id:250, name:"Сухой корм для кошек Vet Diet Renal-Oxalate NG Cat 1.5 кг,Испания", brand:"NG", kind:"Диетический корм", category:"Кошки", price:57, tag:"", image:"images/w_cb70b05551d4b588.jpg"},
+      {id:251, name:"Сухой корм для кошек Vet Diet Urinary Struvite NG Cat 1,5 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Кошки", price:57, tag:"", image:"images/w_fe93c58f2ee25fc0.jpg"},
+      {id:252, name:"Сухой корм для кошек Vet Diet Obesity NG Cat 1.5 кг, Испания", brand:"NG", kind:"Диетический корм", category:"Кошки", price:57.6, tag:"", image:"images/w_ea800c12117bd45d.jpg"},
+      {id:253, name:"Влажный корм для кошек NGC Gastrointestinal Diet 200 гр, Испания", brand:"NG", kind:"Влажный корм", category:"Кошки", price:9, tag:"", image:"images/w_0ba7882ee67fd457.jpg"},
+      {id:254, name:"Влажный корм для кошекNGC Renal Oxalate 200 гр, Испания", brand:"NGC", kind:"Влажный корм", category:"Кошки", price:9, tag:"", image:"images/w_2006b52bd9eac445.jpg"},
+      {id:255, name:"Влажный корм для кошек NGC Urinary Diet 200 гр,Испания", brand:"NG", kind:"Влажный корм", category:"Кошки", price:9, tag:"", image:"images/w_479978da750d3b37.jpg"},
+      {id:256, name:"Сухой корм для собак DIBAQ SENSE GRAIN FREE DOG SALMON 2KG, Испания", brand:"Dibaq", kind:"Сухой корм", category:"Собаки", price:49.2, tag:"", image:"images/w_d88680e9fc130102.jpg"},
+      {id:257, name:"Сухой корм для собак DIBAQ SENSE GRAIN FREE DOG RABBIT 2KG,Испания", brand:"Dibaq", kind:"Сухой корм", category:"Собаки", price:50.172, tag:"", image:"images/w_1424e64b737b16c7.jpg"},
+      {id:258, name:"Сухой корм для собак DIBAQ SENSE GRAIN FREE DOG WILD BOAR DEER 2KG, Испания", brand:"Dibaq", kind:"Сухой корм", category:"Собаки", price:49.2, tag:"", image:"images/w_9933abd984a92c5e.jpg"},
+      {id:259, name:"Сухой корм для кошек DIBAQ SENSE GRAIN FREE CAT STERILIZED, 1,5KG Испания", brand:"Dibaq", kind:"Сухой корм", category:"Кошки", price:52.8, tag:"", image:"images/w_181e3174d3bbac68.jpg"},
+      {id:260, name:"Сухой корм для кошек DIBAQ SENSE GRAIN FREE CAT HAIRBALL 1,5KG /Испания", brand:"Dibaq", kind:"Сухой корм", category:"Кошки", price:52.8, tag:"", image:"images/w_638f6e3250fe4fff.jpg"},
+      {id:261, name:"Сухой корм для кошек DIBAQ SENSE GRAIN FREE CAT DELICIOUS 1,5KG Испания", brand:"Dibaq", kind:"Сухой корм", category:"Кошки", price:52.8, tag:"", image:"images/w_34d70a3ce3240e8a.jpg"},
+      {id:262, name:"Сухой корм для кошек DIBAQ SENSE GRAIN FREE CAT URINARY 1,5KG Испания", brand:"Dibaq", kind:"Сухой корм", category:"Кошки", price:57, tag:"", image:"images/w_9fcb32f981bc4667.jpg"},
+      {id:263, name:"Сухой корм для кошек CAT ATLANTIC SEA NG 1,5 кг, Испания", brand:"NG", kind:"Сухой корм", category:"Кошки", price:52.8, tag:"", image:"images/w_0fb2146d3ee0b169.jpg"},
+      {id:264, name:"Сухой корм для котят и кошек Cat Wild Instinct Medium & Large NG 600гр,Испания", brand:"NG", kind:"Сухой корм", category:"Кошки", price:24.6, tag:"", image:"images/w_e1cc6d4bee0a8cba.jpg"},
     ];
 
     const FREE_FROM = 50; // бесплатная доставка от этой суммы, Br
     const PHONE_HREF = 'tel:+375293256248';       // номер для заказа
     const PHONE_TEXT = '+375 (29) 325-62-48';
     let category = 'Все', query = '', sort = 'featured', cart = {};
-    const money = n => new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 1}).format(n) + ' Br';
+    const money = n => new Intl.NumberFormat('ru-RU', {maximumFractionDigits: 2}).format(n) + ' Br';
     const plural = (n, one, few, many) => {
       const m10 = n % 10, m100 = n % 100;
       if (m10 === 1 && m100 !== 11) return one;
@@ -971,18 +1249,12 @@ footer .logo { font-size: 18px; }
     window.addEventListener('load', () => setTimeout(revealAll, 900));
     setTimeout(revealAll, 2500);
 
-    function renderProducts() {
-      let list = products.filter(p =>
-        (category === 'Все' || p.category === category) &&
-        (p.name + ' ' + p.category + ' ' + p.kind + ' ' + p.brand).toLowerCase().includes(query.toLowerCase())
-      );
-      if (sort === 'low') list.sort((a,b) => a.price - b.price);
-      if (sort === 'high') list.sort((a,b) => b.price - a.price);
-      if (sort === 'name') list.sort((a,b) => a.name.localeCompare(b.name, 'ru'));
-      document.getElementById('resultCount').textContent =
-        list.length + ' ' + plural(list.length, 'товар', 'товара', 'товаров');
+    const PAGE_SIZE = 60;
+    let visibleProducts = [];
+    let visibleCount = 0;
 
-      grid.innerHTML = list.length ? list.map((p, i) => `
+    function productCard(p, i) {
+      return `
         <article class="product reveal" style="--d:${Math.min(i, 11) * 0.035}s">
           <div class="product-visual">
             ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
@@ -999,11 +1271,48 @@ footer .logo { font-size: 18px; }
               <button class="add-cart" data-add="${p.id}" aria-label="Добавить ${p.name} в корзину">В корзину</button>
             </div>
           </div>
-        </article>`).join('') : '<div class="empty"><span>🐾</span>Ничего не найдено. Попробуй изменить поиск или категорию.</div>';
+        </article>`;
+    }
 
-      grid.querySelectorAll('[data-add]').forEach(b => b.addEventListener('click', () => add(Number(b.dataset.add))));
+    function updateLoadMore() {
+      const wrap = document.getElementById('loadMoreWrap');
+      const left = visibleProducts.length - visibleCount;
+      wrap.hidden = left <= 0;
+      if (left > 0) document.getElementById('loadMore').textContent = 'Показать ещё ' + left;
+    }
+
+    function renderChunk() {
+      if (!visibleProducts.length) {
+        grid.innerHTML = '<div class="empty"><span>🐾</span>Ничего не найдено. Попробуй изменить поиск или категорию.</div>';
+        updateLoadMore();
+        return;
+      }
+      const slice = visibleProducts.slice(visibleCount, visibleCount + PAGE_SIZE);
+      grid.insertAdjacentHTML('beforeend', slice.map(productCard).join(''));
+      visibleCount += slice.length;
+      updateLoadMore();
       watch(grid);
     }
+
+    function renderProducts(reset = true) {
+      visibleProducts = products.filter(p =>
+        (category === 'Все' || p.category === category) &&
+        (p.name + ' ' + p.category + ' ' + p.kind + ' ' + p.brand).toLowerCase().includes(query.toLowerCase())
+      );
+      if (sort === 'low') visibleProducts.sort((a,b) => a.price - b.price);
+      if (sort === 'high') visibleProducts.sort((a,b) => b.price - a.price);
+      if (sort === 'name') visibleProducts.sort((a,b) => a.name.localeCompare(b.name, 'ru'));
+      document.getElementById('resultCount').textContent =
+        visibleProducts.length + ' ' + plural(visibleProducts.length, 'товар', 'товара', 'товаров');
+      if (reset) { grid.innerHTML = ''; visibleCount = 0; }
+      renderChunk();
+    }
+
+    grid.addEventListener('click', e => {
+      const btn = e.target.closest('[data-add]');
+      if (btn) add(Number(btn.dataset.add));
+    });
+    document.getElementById('loadMore').onclick = () => renderChunk();
 
     function add(id) {
       cart[id] = (cart[id] || 0) + 1;

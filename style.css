@@ -152,6 +152,45 @@ img { display: block; max-width: 100%; }
 }
 .count.pop { animation: pop .45s cubic-bezier(.2, 1.6, .4, 1); }
 
+/* ---------- Instagram ---------- */
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.ig-link {
+  display: inline-grid;
+  place-items: center;
+  width: 42px; height: 42px;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s, box-shadow .25s, color .25s, border-color .25s;
+}
+.ig-link svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-link:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #f9ce34, #ee2a7b 52%, #6228d7);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.ig-link:active { transform: scale(.95); }
+
+/* ссылка-текст на Инстаграм (модальное окно, корзина) */
+.ig-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color .25s;
+}
+.ig-text-link svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-text-link:hover { color: #ee2a7b; }
+
 /* ---------- первый экран ---------- */
 .hero {
   position: relative;
@@ -456,6 +495,25 @@ footer .logo { font-size: 18px; }
 .footer-qr img { width: 92px; height: 92px; display: block; border-radius: 10px; }
 .footer-qr-text b { display: block; font-family: var(--font-head); font-size: 14px; letter-spacing: -.01em; margin-bottom: 3px; }
 .footer-qr-text span { color: var(--muted); font-size: 12.5px; line-height: 1.4; }
+.footer-social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 18px 11px 13px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .3s, box-shadow .3s, border-color .3s;
+}
+.social-link svg { width: 23px; height: 23px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+.social-link b { display: block; font-family: var(--font-head); font-size: 14px; letter-spacing: -.01em; }
+.social-link span { display: block; color: var(--muted); font-size: 12.5px; }
+.social-link:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: #e6cbab; }
+.social-link:hover svg { stroke: #ee2a7b; }
 .footer-address {
   display: flex;
   align-items: center;
@@ -668,6 +726,8 @@ footer .logo { font-size: 18px; }
   .nav { padding: 8px 14px; gap: 10px; }
   .logo img { height: 62px; max-width: 176px; }
   .logo span.logo-address { font-size: 10px; }
+  .ig-link { width: 38px; height: 38px; }
+  .ig-link svg { width: 18px; height: 18px; }
   .cart-button { padding: 9px 13px; font-size: 14px; }
 
   /* первый экран на телефоне: компактно, без пустот */
@@ -703,9 +763,18 @@ footer .logo { font-size: 18px; }
 
 /* совсем узкие телефоны — чуть уменьшаем лого и корзину, чтобы всё влезло в строку */
 @media (max-width: 380px) {
+  .nav { padding: 6px 8px; gap: 8px; }
+  .nav-actions { gap: 8px; }
   .logo img { height: 54px; max-width: 148px; }
   .logo span.logo-address { font-size: 9px; }
+  .ig-link { width: 34px; height: 34px; }
+  .ig-link svg { width: 16px; height: 16px; }
   .cart-button { padding: 8px 11px; font-size: 13px; }
+}
+
+/* самые узкие экраны — прячем адрес в шапке, чтобы строка не ломалась */
+@media (max-width: 340px) {
+  .logo span.logo-address { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
